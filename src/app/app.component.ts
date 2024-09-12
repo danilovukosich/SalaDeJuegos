@@ -1,13 +1,39 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component,  Renderer2  } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, RouterLink, ReactiveFormsModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css'] 
 })
 export class AppComponent {
-  title = 'TP1';
+  title = 'tp1';
+
+
+  constructor(private renderer: Renderer2) {}
+
+
+  LightDarkMode():void
+  {
+    let switchIcon:any = document.getElementById('light-dark-mode');
+    const appBody:any = document.getElementById('body-app');
+    
+    
+    if(switchIcon.className=='bx bxs-moon')
+    {
+      switchIcon.className='bx bxs-sun';
+      this.renderer.setStyle(appBody, 'backgroundImage', `url('../assets/images/BackgroundDark.png')`);
+      
+    }
+    else
+    {
+      switchIcon.className='bx bxs-moon';
+      this.renderer.setStyle(appBody, 'backgroundImage', `url('../assets/images/BackgroundLight.jpg')`);
+    }
+
+  }
+
 }

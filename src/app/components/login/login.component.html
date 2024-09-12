@@ -1,0 +1,54 @@
+<div class="container">
+
+    <div class="form-login">
+        <h1>Inicio Sesion</h1>
+
+        <div class="input-box">
+            <input [(ngModel)]="email" type="text" placeholder="Email">
+            <i class='bx bxs-envelope'></i>
+        </div>
+        <div class="input-box">
+            <input  [(ngModel)]="password" id="password-login" type="password" placeholder="Contraseña">
+            <i (click)="ShowHidePassword()" id="eyeIcon" class='bx bxs-show'></i>
+            <!-- <i class='bx bxs-lock-alt' ></i> -->
+        </div>
+
+        <!-- <div class="forgot-remeber-password">
+            <label><input type="checkbox">Recuerdame</label>
+            <a href="#">Olvido su contraseña?</a>
+        </div> -->
+
+        <button type="submit" class="btn" (click)="LogIn()">Login</button>
+
+        <div class="register-link">
+            <p>No tiene una cuenta? <a (click)="LogInRegisterButton()">Registrate</a></p>
+        </div>
+    </div>
+        
+    <div class="form-register" >
+        <h1>Registro</h1>
+    
+        <div class="input-box">
+            <input type="text" placeholder="Usuario" id="registerUsername" >
+            <i class='bx bxs-user'></i>
+        </div>
+        <div class="input-box">
+            <input type="text" placeholder="Email" id="registerEmail" >
+            <i class='bx bxs-envelope'></i>
+        </div>
+        <div class="input-box">
+            <input type="text" placeholder="Contraseña" id="registerPassword" >
+            <i class='bx bxs-lock-alt' ></i>
+        </div>
+
+        <!-- <div class="forgot-remeber-password">
+            <label><input type="checkbox"> Acepto, Terminos y condiciones.</label>
+        </div> -->
+
+        <button type="submit" class="btn" >Registrar</button>
+        <div class="login-link">
+            <p>Ya tiene una cuenta? <a (click)="RegisterLogInButton()">Inicia sesion</a></p>
+        </div>
+    </div>
+   
+</div>

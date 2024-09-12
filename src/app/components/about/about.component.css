@@ -1,0 +1,44 @@
+.container{
+    width: 700px;
+    height: 400px;
+    background: transparent;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    color: #fff;
+    /* hacerle espacio entre los borde y el contenido */
+    border-radius: 10px;/* bordes redondos */
+    padding: 30px 40px;
+    border: 2px solid rgba(255, 255, 255, .2);
+    position: relative;
+    justify-content: center;/* centra todo lo que este dentro del container */
+    transition: height .45s ease;
+    overflow: hidden;
+}
+
+.contenido{
+    display: flex;
+    justify-content: space-between;
+}
+
+h1{
+    font-size: 36px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    text-align: center;
+}
+
+strong
+{
+    font-size: 26px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+}
+img{
+    width: 300px;
+    margin-right: 20px;
+    border-radius: 5%;
+}
+p{
+    justify-content: space-between;
+    flex: 1;
+}
