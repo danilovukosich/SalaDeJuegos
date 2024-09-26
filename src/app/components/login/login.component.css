@@ -10,7 +10,7 @@
 
 .container{
     width: 420px;
-    height: 450px;
+    height: 480px;
     background: transparent;
     backdrop-filter: blur(20px);
     box-shadow: 0 0 10px rgba(0, 0, 0, .2);
@@ -166,6 +166,27 @@
     font-weight: 600;
     margin-top: 20px;
     transition: all 0.3s ease 0s;
+}
+
+.container .btnAuto{
+    width: 160px;
+    height: 30px;
+    background: #fff;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+    margin-top: 20px;
+    transition: all 0.3s ease 0s;
+    margin-left: 50px;
+}
+
+.container .btnAuto:hover{
+    background-color: #0cd427;
 }
 
 .container .btn:hover{

@@ -20,14 +20,28 @@ export class LoginComponent{
     email!:string;
     password!:string;
 
+    emailRegistro!:string;
+    passwordRegistro!:string;
+
     constructor(private auth:AuthService)
     {
         
     }
 
+    AutoComplete():void
+    {
+        this.email="test@test.com";
+        this.password="test123";
+    }
+
     LogIn()
     {   
         this.auth.LogUser(this.email, this.password);
+    }
+
+    Register()
+    {
+        this.auth.Register(this.emailRegistro, this.passwordRegistro);
     }
     
 

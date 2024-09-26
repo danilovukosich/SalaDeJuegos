@@ -18,11 +18,14 @@
             <a href="#">Olvido su contraseña?</a>
         </div> -->
 
-        <button type="submit" class="btn" (click)="LogIn()">Login</button>
+        <button type="submit" class="btn" (click)="LogIn()">Iniciar sesion</button>
 
         <div class="register-link">
             <p>No tiene una cuenta? <a (click)="LogInRegisterButton()">Registrate</a></p>
         </div>
+
+        <button class="btnAuto" (click)="AutoComplete()">Autocompletar</button>
+
     </div>
         
     <div class="form-register" >
@@ -33,11 +36,11 @@
             <i class='bx bxs-user'></i>
         </div>
         <div class="input-box">
-            <input type="text" placeholder="Email" id="registerEmail" >
+            <input [(ngModel)]="emailRegistro" type="text" placeholder="Email" id="registerEmail" >
             <i class='bx bxs-envelope'></i>
         </div>
         <div class="input-box">
-            <input type="text" placeholder="Contraseña" id="registerPassword" >
+            <input [(ngModel)]="passwordRegistro" type="text" placeholder="Contraseña" id="registerPassword" >
             <i class='bx bxs-lock-alt' ></i>
         </div>
 
@@ -45,7 +48,7 @@
             <label><input type="checkbox"> Acepto, Terminos y condiciones.</label>
         </div> -->
 
-        <button type="submit" class="btn" >Registrar</button>
+        <button type="submit" class="btn" (click)="Register()">Registrarse</button>
         <div class="login-link">
             <p>Ya tiene una cuenta? <a (click)="RegisterLogInButton()">Inicia sesion</a></p>
         </div>

@@ -9,14 +9,25 @@
       <nav>
           <ul class="nav-links">
               <li><a routerLink="home">Home</a></li>
-              <!-- <li><a routerLink="">Estadisticas</a></li> -->
+              <li><a routerLink="stats">Estadisticas</a></li>
+              <li><a routerLink="chat">Sala de chat</a></li>
               <li><a routerLink='about'>Quien soy?</a></li>
           </ul>
       </nav>
       <div id="profileButtons">
         <i (click)="LightDarkMode()" id="light-dark-mode" class='bx bxs-moon'></i>
         <!-- <i id="moon" class='bx bxs-moon' ></i> -->
-        <a class="cta" ><button routerLink="login" class="perfilBtn">Account</button></a>
+
+        @if (this.VerifyCurrentUser()) 
+        {
+          <a class="cta" ><button (click)="LogOut()" routerLink="home" class="cerrarSesionBtn">LogOut</button></a>
+        }
+        @else 
+        {
+          <a class="cta" ><button routerLink="login" class="perfilBtn">Account</button></a>
+        }
+
+
       </div>        
   </header>
   <router-outlet>

@@ -1,6 +1,7 @@
 import { Component,  Renderer2  } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterLink, RouterOutlet } from '@angular/router';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,7 @@ export class AppComponent {
   title = 'tp1';
 
 
-  constructor(private renderer: Renderer2) {}
+  constructor(private renderer: Renderer2, private auth: AuthService) {}
 
 
   LightDarkMode():void
@@ -35,5 +36,33 @@ export class AppComponent {
     }
 
   }
+
+  LogOut()
+  {
+    this.auth.LogOut();
+  }
+
+ /*  ngOnDestroy(): void {
+    //Called once, before the instance is destroyed.
+    //Add 'implements OnDestroy' to the class.
+    this.LogOut();
+  } */
+
+
+  VerifyCurrentUser()
+  {
+    if(this.auth.GetUser()!=null)
+    {
+      return true;
+    }
+    else
+    {
+      return false;
+    }
+
+  }
+
+
+
 
 }
