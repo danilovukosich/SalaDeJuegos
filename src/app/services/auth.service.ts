@@ -40,14 +40,17 @@ export class AuthService {
 
       switch(e.code)
       {
-          case "auth/invalid-credential":
-          
-          case "auth/invalid-email":
+        case "auth/invalid-credential":
+        //agragar alert
+        break;
+        
+        case "auth/invalid-email":
+        //agragar alert
+        break;
 
-          break;
-          default:
+        default:
 
-          break;
+        break;
       }
 
       return false;
@@ -55,7 +58,8 @@ export class AuthService {
     return false;
   } 
 
-  Register(nuevoUsuarioMail:string,nuevoUsuarioContra:string){
+  Register(nuevoUsuarioMail:string,nuevoUsuarioContra:string)
+  {
     createUserWithEmailAndPassword(this.auth, nuevoUsuarioMail,nuevoUsuarioContra)
     .then((res)=>{
 
