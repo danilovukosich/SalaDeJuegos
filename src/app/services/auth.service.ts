@@ -3,6 +3,7 @@ import { Auth, signInWithEmailAndPassword, signOut } from '@angular/fire/auth';
 import { Firestore, collection, addDoc } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { NgToastService } from 'ng-angular-popup';
  
 
 @Injectable({
@@ -10,7 +11,7 @@ import { createUserWithEmailAndPassword } from 'firebase/auth';
 })
 export class AuthService {
 
-  constructor(private auth:Auth, private firestore:Firestore, private router:Router) //inyeccion de dependencias
+  constructor(private auth:Auth, private firestore:Firestore, private router:Router, private toast:NgToastService) //inyeccion de dependencias
   {
 
   }
@@ -22,6 +23,14 @@ export class AuthService {
 
     },1000);
   }
+  
+
+  //TIPOS DE ALERTS
+  //this.toast.success("This is new success message", "SUCCESS", 5000);
+  //this.toast.danger("This is new error message"); // by default visible duration is 2000ms
+  //this.toast.info("This is new info message", "INFO", 5000);
+  //this.toast.warning("This is new warning message", "WARNING", 5000);
+
 
   LogUser(email:string,password:string):boolean // funcion de login
   {
@@ -29,7 +38,7 @@ export class AuthService {
     .then(()=>{
 
       console.log("Se logueo exitosamente!");
-
+      this.toast.success("Logueo exitoso", "Exito");
       this.Log();//logs en firestore
 
       this.router.navigate(["home"]);//redireccion al home
@@ -42,14 +51,15 @@ export class AuthService {
       {
         case "auth/invalid-credential":
         //agragar alert
+        this.toast.danger("Credenciales invalidas", "Error");
         break;
         
         case "auth/invalid-email":
-        //agragar alert
+          this.toast.danger("Email invalido", "Error");
         break;
 
         default:
-
+          this.toast.danger("Credenciales invalidas", "Error");
         break;
       }
 
@@ -63,8 +73,7 @@ export class AuthService {
     createUserWithEmailAndPassword(this.auth, nuevoUsuarioMail,nuevoUsuarioContra)
     .then((res)=>{
 
-      //if(res.user.email !== null) this.flagUserLoged = true;
-
+      this.toast.success("Registro exitoso", "Exito");
       this.router.navigate(["home"]);
       this.LogUser(nuevoUsuarioMail, nuevoUsuarioContra);
     })
@@ -75,23 +84,19 @@ export class AuthService {
 
       switch (e.code) {
         case "auth/invalid-email":
-          // this.msjError = "Email invalido";
-          //this.ShowModal("Error","Email invalido.","error");
+          this.toast.danger("Email Invalido", "Error");
         break;
         case "auth/email-already-in-use":
-          // this.msjError = "Email ya en uso";
-          //this.ShowModal("Error","Email ya en uso.","error");
+          this.toast.danger("Email en uso", "Error");
         break;
         case "auth/weak-password":
-          // this.msjError = e.code
-          //this.ShowModal("Error","Password muy debil. Debe contener al menos 6 letras.","error");
+          this.toast.danger("Contraseña debil", "Error");
         break;
         case "auth/invalid-credential":
-          //this.ShowModal("Error","Credenciales invalidas.","error");
+          this.toast.danger("Credenciales invalidas", "Error");
         break;
         default:
-          // this.msjError = e.code
-          //this.ShowModal("Error","Se produjo un error.","error");
+          this.toast.danger("Credenciales invalidas", "Error");
         break;
       }
     })
@@ -108,6 +113,8 @@ export class AuthService {
   {
     signOut(this.auth).then(()=>{
       console.log("Se deslogueo exitosamente!");
+      this.toast.info("Se deslogueo", "Atencion");
+      this.router.navigate(["login"]);
     });
   }
 

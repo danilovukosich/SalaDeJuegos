@@ -2,11 +2,12 @@ import { Component,  Renderer2  } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { AuthService } from './services/auth.service';
+import { NgToastModule } from 'ng-angular-popup';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RouterLink, ReactiveFormsModule],
+  imports: [RouterOutlet, RouterLink, ReactiveFormsModule, NgToastModule],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'] 
 })
