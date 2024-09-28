@@ -37,7 +37,7 @@ export class AuthService {
     signInWithEmailAndPassword(this.auth, email,password)
     .then(()=>{
 
-      console.log("Se logueo exitosamente!");
+      //console.log("Se logueo exitosamente!");
       this.toast.success("Logueo exitoso", "Exito");
       this.Log();//logs en firestore
 
@@ -79,8 +79,6 @@ export class AuthService {
     })
     .catch((e)=>{
       console.log(e.code);
-
-      //this.flagUserLoged = false;
 
       switch (e.code) {
         case "auth/invalid-email":
