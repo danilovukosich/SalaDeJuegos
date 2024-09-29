@@ -54,8 +54,9 @@ export class ChatComponent
 
   }
 
-  ngAfterViewChecked() {
-    this.scrollToBottom(); // Llama aquí si es necesario
+  ngAfterViewChecked()//chekea cambios en la view
+  {
+    this.scrollToBottom();
   }
 
 
