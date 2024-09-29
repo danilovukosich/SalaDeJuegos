@@ -38,6 +38,11 @@
     scroll-behavior: smooth;
 }
 
+.mensajeUser{
+   
+    text-align: right;
+}
+
 /* Estilos del scrollbar */
 .containerDos::-webkit-scrollbar {
     width: 8px; /* Ancho del scrollbar más pequeño */

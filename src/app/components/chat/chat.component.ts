@@ -57,6 +57,8 @@ export class ChatComponent
   ngAfterViewChecked()//chekea cambios en la view
   {
     this.scrollToBottom();
+    let user = this.auth.GetUser();
+    this.userEmail = user?.email;
   }
 
 
