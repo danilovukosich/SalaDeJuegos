@@ -30,11 +30,12 @@
     padding: 25px 40px;
     border: 2px solid rgba(255, 255, 255, .2);
     position: relative;
-    justify-content: center;/* centra todo lo que este dentro del container */
+    justify-content: flex-end;
     transition: height .45s ease;
     overflow: hidden;
     margin-bottom: 5%;
     overflow-y: auto; /* Permitir scroll vertical */
+    scroll-behavior: smooth;
 }
 
 /* Estilos del scrollbar */
@@ -136,4 +137,8 @@ strong
 p{
     justify-content: space-between;
     flex: 1;
+}
+
+.mensaje{
+    margin: 5px 0; /* Espaciado entre mensajes */
 }

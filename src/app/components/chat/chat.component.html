@@ -2,32 +2,42 @@
     <h1>Sala de chat</h1>
     <br>
     <div class="contenido">
-        <div class="containerDos">
-            Ejemplo mensaje 1
-            <br>
-            <br>
-            Ejemplo mensaje 2
-            <br>
-            <br>
-            Ejemplo mensaje 3
-            <br>
-            <br>
-            Ejemplo mensaje 4 
-            <br>
-            <br>
-            Ejemplo mensaje 2
-            <br>
-            <br>
-            Ejemplo mensaje 3
-            <br>
-            <br>
-            Ejemplo mensaje 4
+        <div #containerDos class="containerDos" id="chatContainer">
+
+            @for(item of mensajes; track $index) 
+            {
+                @if (item.userMail == userEmail) 
+                {
+                    <div class="mensaje" style="padding-left: 85%;">
+                        <a>{{item.message}}</a>
+                        <br>
+                        <a style="font-size: x-small;"> - {{item.hora}}</a>
+                        <br>
+                        <br>
+                    </div>
+                }
+                @else 
+                {
+                    <div class="mensaje">
+                        <a>{{item.message}}</a>
+                        <br>
+                        <a style="font-size: x-small;">{{item.userMail}}</a>
+                        <a style="font-size: x-small;"> - {{item.hora}}</a>
+                        <br>
+                        <br>
+                    </div>
+                }
+                
+                
+
+            }
+            
         </div>
 
         <div class="containerTres">
             <div class="input-box">
-                <input id="mensaje-chat" type="text" placeholder="Escriba aqui...">
-                <i class='bx bx-send' style='color:#ffffff'  ></i>
+                <input  [(ngModel)]="mensaje" id="mensaje-chat" type="text" placeholder="Escriba aqui..." (keyup.enter)="GuardarMensaje()">
+                <i (click)="GuardarMensaje()" class='bx bx-send' style='color:#ffffff'  ></i>
             </div>
         </div>
 

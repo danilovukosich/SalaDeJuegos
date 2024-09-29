@@ -26,6 +26,7 @@
     overflow: hidden;
     
 }
+
 /* depende de js */
 .container.active{
     height: 520px;

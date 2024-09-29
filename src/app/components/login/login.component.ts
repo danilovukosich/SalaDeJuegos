@@ -16,7 +16,6 @@ import { AuthService } from '../../services/auth.service';
 })
 export class LoginComponent{
 
-
     email!:string;
     password!:string;
 
