@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-ahorcado',
+  selector: 'app-simon',
   standalone: true,
   imports: [RouterLink],
-  templateUrl: './ahorcado.component.html',
-  styleUrl: './ahorcado.component.css'
+  templateUrl: './simon.component.html',
+  styleUrl: './simon.component.css'
 })
-export class AhorcadoComponent {
+export class SimonComponent {
 
 }
