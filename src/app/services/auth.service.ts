@@ -25,7 +25,7 @@ export class AuthService {
   }
   
 
-  //TIPOS DE ALERTS
+  //TIPOS DE ALERTS de toast
   //this.toast.success("This is new success message", "SUCCESS", 5000);
   //this.toast.danger("This is new error message"); // by default visible duration is 2000ms
   //this.toast.info("This is new info message", "INFO", 5000);

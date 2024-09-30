@@ -6,12 +6,14 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { provideHttpClient } from '@angular/common/http';
 
 
 
 export const appConfig: ApplicationConfig = {
   providers: [provideRouter(routes),
      provideAnimationsAsync(),
+     provideHttpClient(),
      provideFirebaseApp(() => initializeApp({"projectId":"saladejuegos-10683",
                                             "appId":"1:473787109319:web:0cf551dbf9a581a01453e2",
                                             "storageBucket":"saladejuegos-10683.appspot.com",

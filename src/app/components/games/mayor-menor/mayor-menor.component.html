@@ -4,14 +4,56 @@
             <i class='bx bx-chevron-left' style='color:#ffffff'  ></i>
             <h2>Volver</h2>
         </div>
+
+        
+        <h1>Mayor menor</h1>
+        <div class="vidas">
+            <h2 style="margin-right: 10px;">Vidas:</h2>
+            <div class="corazones">
+                @switch (vidas) 
+                {
+                    @case (0)
+                    {
+                        <i class='bx bx-heart bx-tada' style='color:#f15555' ></i>
+                        <i class='bx bx-heart bx-tada' style='color:#f15555' ></i>
+                        <i class='bx bx-heart bx-tada' style='color:#f15555' ></i>
+                    }
+                    @case (1)
+                    {
+                        <i class='bx bxs-heart' style='color:#f15555'  ></i>
+                        <i class='bx bx-heart bx-tada' style='color:#f15555' ></i>
+                        <i class='bx bx-heart bx-tada' style='color:#f15555' ></i>
+                    }
+                    @case (2)
+                    {
+                        <i class='bx bxs-heart' style='color:#f15555'  ></i>
+                        <i class='bx bxs-heart' style='color:#f15555'  ></i>
+                        <i class='bx bx-heart bx-tada' style='color:#f15555' ></i>
+                    }
+                    @case (3) 
+                    {
+                        <i class='bx bxs-heart' style='color:#f15555'  ></i>
+                        <i class='bx bxs-heart' style='color:#f15555'  ></i>
+                        <i class='bx bxs-heart' style='color:#f15555'  ></i>
+                    }
+
+                }
+            </div>
+        </div>
+        
     </nav>
-    <h1>Mayor menor</h1>
     <br>
     <div class="contenido">
-        <p>
-            <br>
-            <strong>🚧 🏗️ Aca,</strong>  estara el juego de mayor y menor...
-        </p>
-
+        <div class="containerDos">
+            <img src="https://www.deckofcardsapi.com/static/img/back.png" alt="">
+            <img src="{{cartaImagen}}" alt="">
+        </div>
     </div>
+    <footer>
+        <div class="botonesSelect">
+            <button (click)="TraerCarta()" class="mayorBtn">Mayor</button>
+            <button (click)="TraerCarta()" class="menorBtn">Menor</button>
+        </div>
+        <h2 style="font-size: xx-large; font-weight: 500;">Puntos: {{puntos}}</h2>
+    </footer>
 </div>
