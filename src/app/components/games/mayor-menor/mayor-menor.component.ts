@@ -75,7 +75,7 @@ export class MayorMenorComponent {
       console.log("Es mayor que...");
       console.log(valorActual); */
 
-      if(valorSiguiente >= valorActual)
+      if(valorSiguiente > valorActual)
         {
           this.puntos+=5;
         }
@@ -104,10 +104,38 @@ export class MayorMenorComponent {
       console.log(valorActual); */
       
       
-
-      if(valorSiguiente <= valorActual)
+      if(valorSiguiente < valorActual)
         {
           this.puntos+=5;
+        }
+        else
+        {
+          this.vidas-=1;
+        }
+
+        this.cartaActual=this.cartaSiguiente;
+        this.cartaImagen=this.cartaActual.image;
+
+    });
+  }
+
+  TraerSiguienteIgual()
+  {
+    this.cartaService.GetCarta(this.mazo.deck_id).subscribe((carta)=>{
+      
+      this.cartaSiguiente = carta.cards[0];
+
+      const valorActual = this.convertirValor(this.cartaActual.value);
+      const valorSiguiente = this.convertirValor(this.cartaSiguiente.value);
+
+      /* console.log(valorSiguiente);
+      console.log("Es igual que...");
+      console.log(valorActual); */
+      
+      
+      if(valorSiguiente == valorActual)
+        {
+          this.puntos+=15;
         }
         else
         {

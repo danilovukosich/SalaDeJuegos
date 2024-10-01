@@ -15,6 +15,7 @@
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    margin-top: 100px;
 }
 
 .itemsNav{
@@ -65,11 +66,18 @@ nav h2{
 
 
 .mayorBtn:hover{
-    background-color: #67ec46;
+    background-color: #202220;
+    color: #fff;
 }
 
 .menorBtn:hover{
     background-color: #f15555;
+    color: #fff;
+}
+
+.igualBtn:hover{
+    background-color: #64cf4a;
+    color: #fff;
 }
 
 
@@ -142,4 +150,11 @@ footer button{
     justify-content: space-evenly;
     padding-left: 5%;
     padding-right: 5%;
+}
+
+.containerTres{
+    color: #ffffff;
+    display: flex; 
+    justify-content: center;
+    margin-top: 50px;
 }
