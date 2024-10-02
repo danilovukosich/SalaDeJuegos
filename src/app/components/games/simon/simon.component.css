@@ -93,27 +93,27 @@ nav h2{
     box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 
-.green {
+.verde {
     background-color: green;
     border-top-left-radius: 150px;
 }
 
-.red {
+.rojo {
     background-color: red;
     border-top-right-radius: 150px;
 }
 
-.yellow {
+.amarillo {
     background-color: yellow;
     border-bottom-left-radius: 150px;
 }
 
-.blue {
+.azul {
     background-color: cyan;
     border-bottom-right-radius: 150px;
 }
 
-.center {
+.centro {
     position: absolute;
     width: 90px;
     height: 90px;
