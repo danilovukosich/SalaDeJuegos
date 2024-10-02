@@ -1,6 +1,6 @@
 .container{
     width: 700px;
-    height: 500px;
+    height: 520px;
     background: transparent;
     backdrop-filter: blur(20px);
     box-shadow: 0 0 10px rgba(0, 0, 0, .2);
@@ -15,10 +15,16 @@
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    margin-top: 100px;
 }
 
 .itemsNav{
     display: flex;
+
+}
+nav{
+    display: flex;
+    justify-content: space-between;
 }
 
 .itemsNav:hover{
@@ -62,4 +68,52 @@ i{
 nav h2{
     font-weight: 5004;
     cursor: pointer;
+}
+
+.contenido{
+    display: flex;
+    justify-content: center;
+}
+
+
+.keyboard {
+    display: inline-block;
+    padding: 20px;
+    background-color: transparent;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: "Poppins", sans-serif;
+    margin-top: 250px;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.key {
+    background-color: #e0e0e0;
+    border: none;
+    padding: 15px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+}
+
+.key:hover {
+    background-color: #f1c555;
+}
+
+.key:active {
+    background-color: #f1c555cc;
 }

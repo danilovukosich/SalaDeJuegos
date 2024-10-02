@@ -106,7 +106,6 @@ footer{
     text-align: center;
     display: flex;
     justify-content: space-evenly;
-   
 }
 
 button{
@@ -158,3 +157,5 @@ footer button{
     justify-content: center;
     margin-top: 50px;
 }
+
+

@@ -61,6 +61,7 @@ header{
     padding: 5px 3%;/* 30% en top y bottom y 10% en los costados */
     /* position: fixed; */
     background-color:rgba(4, 32, 77, 0.7);
+    z-index: 40;
 }
 
 

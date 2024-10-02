@@ -1,74 +1,76 @@
-<div class="container">
-    <nav>
-        <div class="itemsNav" routerLink="home">
-            <i class='bx bx-chevron-left' style='color:#ffffff'  ></i>
-            <h2>Volver</h2>
-        </div>
+<div class="general">
+    <div class="container">
+        <nav>
+            <div class="itemsNav" routerLink="home">
+                <i class='bx bx-chevron-left' style='color:#ffffff'  ></i>
+                <h2>Volver</h2>
+            </div>
 
-        
-        <h1>Mayor menor</h1>
-        <div class="vidas">
-            <h2 style="margin-right: 10px;">Vidas:</h2>
-            <div class="corazones">
-                @switch (vidas) 
-                {
-                    @case (0)
+            
+            <h1>Mayor menor</h1>
+            <div class="vidas">
+                <h2 style="margin-right: 10px;">Vidas:</h2>
+                <div class="corazones">
+                    @switch (vidas) 
                     {
-                        <i class='bx bx-heart bx-tada' style='color:#f15555' ></i>
-                        <i class='bx bx-heart bx-tada' style='color:#f15555' ></i>
-                        <i class='bx bx-heart bx-tada' style='color:#f15555' ></i>
-                    }
-                    @case (1)
-                    {
-                        <i class='bx bxs-heart' style='color:#f15555'  ></i>
-                        <i class='bx bx-heart bx-tada' style='color:#f15555' ></i>
-                        <i class='bx bx-heart bx-tada' style='color:#f15555' ></i>
-                    }
-                    @case (2)
-                    {
-                        <i class='bx bxs-heart' style='color:#f15555'  ></i>
-                        <i class='bx bxs-heart' style='color:#f15555'  ></i>
-                        <i class='bx bx-heart bx-tada' style='color:#f15555' ></i>
-                    }
-                    @case (3) 
-                    {
-                        <i class='bx bxs-heart' style='color:#f15555'  ></i>
-                        <i class='bx bxs-heart' style='color:#f15555'  ></i>
-                        <i class='bx bxs-heart' style='color:#f15555'  ></i>
-                    }
+                        @case (0)
+                        {
+                            <i class='bx bx-heart bx-tada' style='color:#f15555' ></i>
+                            <i class='bx bx-heart bx-tada' style='color:#f15555' ></i>
+                            <i class='bx bx-heart bx-tada' style='color:#f15555' ></i>
+                        }
+                        @case (1)
+                        {
+                            <i class='bx bxs-heart' style='color:#f15555'  ></i>
+                            <i class='bx bx-heart bx-tada' style='color:#f15555' ></i>
+                            <i class='bx bx-heart bx-tada' style='color:#f15555' ></i>
+                        }
+                        @case (2)
+                        {
+                            <i class='bx bxs-heart' style='color:#f15555'  ></i>
+                            <i class='bx bxs-heart' style='color:#f15555'  ></i>
+                            <i class='bx bx-heart bx-tada' style='color:#f15555' ></i>
+                        }
+                        @case (3) 
+                        {
+                            <i class='bx bxs-heart' style='color:#f15555'  ></i>
+                            <i class='bx bxs-heart' style='color:#f15555'  ></i>
+                            <i class='bx bxs-heart' style='color:#f15555'  ></i>
+                        }
 
-                }
+                    }
+                </div>
+            </div>
+            
+        </nav>
+        <br>
+        <div class="contenido">
+            <div class="containerDos">
+                <img src="https://www.deckofcardsapi.com/static/img/back.png" alt="">
+                <img src="{{cartaImagen}}" alt="">
             </div>
         </div>
-        
-    </nav>
-    <br>
-    <div class="contenido">
-        <div class="containerDos">
-            <img src="https://www.deckofcardsapi.com/static/img/back.png" alt="">
-            <img src="{{cartaImagen}}" alt="">
-        </div>
+        <footer>
+            <div class="botonesSelect">
+                <button (click)="TraerSiguienteCartaMayor()" class="mayorBtn">Mayor</button>
+                <button (click)="TraerSiguienteIgual()" class="igualBtn">Igual</button>
+                <button (click)="TraerSiguienteCartaMenor()" class="menorBtn">Menor</button>
+            </div>
+            <h2 style="font-size: xx-large; font-weight: 500;">Puntos: {{puntos}}</h2>
+        </footer>
     </div>
-    <footer>
-        <div class="botonesSelect">
-            <button (click)="TraerSiguienteCartaMayor()" class="mayorBtn">Mayor</button>
-            <button (click)="TraerSiguienteIgual()" class="igualBtn">Igual</button>
-            <button (click)="TraerSiguienteCartaMenor()" class="menorBtn">Menor</button>
-        </div>
-        <h2 style="font-size: xx-large; font-weight: 500;">Puntos: {{puntos}}</h2>
-    </footer>
-</div>
-<div class="containerTres">
-    <div>
-        <h2 style="text-align: center;"><strong>📜Reglas</strong></h2>
-        Al seleccionar una opcion se revela la siguente carta...
-        <br>
-        - Si elige Mayor y acierta suma 5 puntos.
-        <br>
-        - Si elige Menor y acierta suma 5 puntos.
-        <br>
-        - Si elige igual y acierta suma 15 puntos.
-        <br>
-        - En el caso de equivocarse pierde una vida.
-        </div>
+    <!-- <div class="containerTres">
+        <div>
+            <h2 style="text-align: center;"><strong>📜Reglas</strong></h2>
+            Al seleccionar una opcion se revela la siguente carta...
+            <br>
+            - Si elige Mayor y acierta suma 5 puntos.
+            <br>
+            - Si elige Menor y acierta suma 5 puntos.
+            <br>
+            - Si elige igual y acierta suma 15 puntos.
+            <br>
+            - En el caso de equivocarse pierde una vida.
+            </div>
+    </div> -->
 </div>
