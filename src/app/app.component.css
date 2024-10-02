@@ -23,6 +23,12 @@
     transition: .4s ease-in-out;
 }
 
+/* Esto precarga las imagenes en la cache para que no haya una pantalla blanca */
+.preload-images{
+    display: none;
+    background-image: url('../assets/images/BackgroundLight.jpg'), 
+    url('../assets/images/BackgroundDark.png');
+}
 
 
 

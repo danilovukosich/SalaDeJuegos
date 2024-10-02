@@ -17,6 +17,10 @@ export class AhorcadoComponent {
 
   constructor()
   {
-    this.puntos=10;//cambiar a cero cuando se cree la logica
+    this.puntos=0;
+    this.vidas=6;//seis vidas por cada parte del cuerpo (cabeza, torso, 2 brazos, 2 piernas)
   }
+
+
+  
 }
