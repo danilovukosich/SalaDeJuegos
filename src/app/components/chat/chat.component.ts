@@ -24,7 +24,7 @@ export class ChatComponent
   @ViewChild('containerDos') containerDos!: ElementRef;
 
   
-  private scrollToBottom(): void {
+  private scrollToBottom(): void {//funcion para que el chat comience abajo
     if (this.containerDos) {
       const container = this.containerDos.nativeElement;
       container.scrollTop = container.scrollHeight;
@@ -54,11 +54,11 @@ export class ChatComponent
 
   }
 
-  ngAfterViewChecked()//chekea cambios en la view
+  ngAfterViewChecked()//chekea cambios en la view 
   {
-    this.scrollToBottom();
-    let user = this.auth.GetUser();
-    this.userEmail = user?.email;
+    this.scrollToBottom();//(al escribir o enviar un mensaje escrolea hacia abajo)
+    let user = this.auth.GetUser();//SACAR?
+    this.userEmail = user?.email;//SACAR?
   }
 
 
