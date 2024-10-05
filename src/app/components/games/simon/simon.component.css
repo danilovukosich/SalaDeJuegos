@@ -48,6 +48,7 @@ p{
 
 nav{
     display: flex;
+    justify-content: space-between;
 }
 
 i{
@@ -65,6 +66,14 @@ nav h2{
     cursor: pointer;
 }
 
+.itemsNav{
+    display: flex;
+}
+
+.itemsNav:hover{
+    color: #f1c555;
+}
+
 
 .contenido{
     display: flex;
@@ -73,15 +82,16 @@ nav h2{
 
 .simon-container {
     position: relative;
-    width: 320px;
-    height: 320px;
+    width: 330px;
+    height: 330px;
     border-radius: 50%;
     background: black;
-    padding: 20px;
+    padding: 25px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.5);
+    margin-top: 30px;
 }
 
 .simon-btn {
@@ -98,20 +108,37 @@ nav h2{
     background-color: green;
     border-top-left-radius: 150px;
 }
+.verde:active {
+    background-color: rgb(4, 206, 4);
+}
+
 
 .rojo {
+    background-color: rgb(177, 2, 2);
+    border-top-right-radius: 150px;
+}
+
+.rojo:active {
     background-color: red;
     border-top-right-radius: 150px;
 }
 
 .amarillo {
-    background-color: yellow;
+    background-color: rgb(182, 182, 4);
     border-bottom-left-radius: 150px;
 }
 
+.amarillo:active {
+    background-color: yellow;
+}
+
 .azul {
-    background-color: cyan;
+    background-color: rgb(4, 126, 156);
     border-bottom-right-radius: 150px;
+}
+
+.azul:active {
+    background-color: rgb(0, 201, 252);
 }
 
 .centro {
@@ -131,4 +158,10 @@ nav h2{
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.7);
     font-family: "Poppins", sans-serif;
     font-weight: 700;
+    cursor: pointer;
+}
+
+.centro:active{
+    font-size: 1.3em;
+    color: #f1c555;
 }
