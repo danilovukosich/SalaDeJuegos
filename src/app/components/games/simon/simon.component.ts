@@ -39,6 +39,7 @@ export class SimonComponent {
     this.index = 0;
     this.playing = true;
     this.speed = 1000; // Reiniciar la velocidad en cada nuevo juego
+    this.points=0;
     this.nextRound();
   }
 
