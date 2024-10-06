@@ -18,13 +18,22 @@ export class SimonComponent {
   index = 0;
   playing = false;
   speed = 1000; // Velocidad inicial (1 segundo entre botones)
+  win!:boolean;
+  points!:number;
 
   @ViewChild('botonVerde') botonVerde!: ElementRef;
   @ViewChild('botonRojo') botonRojo!: ElementRef;
   @ViewChild('botonAmarillo') botonAmarillo!: ElementRef;
   @ViewChild('botonAzul') botonAzul!: ElementRef;
 
-  startGame() {
+  constructor()
+  {
+    this.win=false;
+    this.points=0;
+  }
+
+  startGame() 
+  {
     this.sequence = [];
     this.userSequence = [];
     this.index = 0;
@@ -33,7 +42,8 @@ export class SimonComponent {
     this.nextRound();
   }
 
-  nextRound() {
+  nextRound() 
+  {
     const randomButton = this.buttons[Math.floor(Math.random() * 4)];
     this.sequence.push(randomButton);
     
@@ -41,9 +51,21 @@ export class SimonComponent {
     if (this.sequence.length >= 3 && this.sequence.length < 6) 
     {
       this.speed = 750; // Más rápido a partir de la 3ra ronda
-    } else if (this.sequence.length >= 6) 
+    } 
+    else if (this.sequence.length >= 6) 
     {
       this.speed = 500; // Aún más rápido a partir de la 6ta ronda
+    }
+    else if (this.sequence.length >= 7)
+    {
+      this.speed = 300;// Ultimas 2 rondas lo mas rapido
+    }
+    else if(this.sequence.length == 8)// A las 8 rondas se gana
+    {
+      this.playing = false;
+      this.win=true;
+      this.points=100;
+      alert('Usted gano delicidades')
     }
 
     setTimeout(() => {//tiempo para que no se pise el color al pasar de ronda
@@ -52,7 +74,8 @@ export class SimonComponent {
     
   }
 
-  showSequence() {
+  showSequence() 
+  {
     let delay = 0;
 
     this.sequence.forEach((color) => {
@@ -65,12 +88,14 @@ export class SimonComponent {
     });
   }
 
-  activateButton(color: string) {
+  activateButton(color: string) 
+  {
     let buttonElement: ElementRef | undefined;
     let originalColor: string;
     let highlightColor!: string;
 
-    switch (color) {
+    switch (color) 
+    {
       case 'verde':
         buttonElement = this.botonVerde;
         originalColor = 'green';
@@ -93,29 +118,36 @@ export class SimonComponent {
         break;
     }
 
-    if (buttonElement) {
+    if (buttonElement) 
+    {
       buttonElement.nativeElement.style.backgroundColor = highlightColor;
 
       setTimeout(() => {
         buttonElement!.nativeElement.style.backgroundColor = originalColor;
-      }, 500);
+      }, 200);//200 para que no se pisen los colores con el cambio de velocidad
     }
   }
 
-  onClick(color: string) {
+  onClick(color: string) 
+  {
     if (!this.playing) return;
 
     this.activateButton(color);
     this.userSequence.push(color);
 
-    if (this.userSequence[this.index] === this.sequence[this.index]) {
+    if (this.userSequence[this.index] === this.sequence[this.index]) 
+    {
       this.index++;
-      if (this.index === this.sequence.length) {
+
+      if (this.index === this.sequence.length) 
+      {
         this.userSequence = [];
         this.index = 0;
         setTimeout(() => this.nextRound(), 1000);
       }
-    } else {
+    } 
+    else 
+    {
       this.playing = false;
       alert('Game Over! Start again.');
     }
