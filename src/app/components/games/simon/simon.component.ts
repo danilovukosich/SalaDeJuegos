@@ -51,14 +51,17 @@ export class SimonComponent {
     if (this.sequence.length >= 3 && this.sequence.length < 6) 
     {
       this.speed = 750; // Más rápido a partir de la 3ra ronda
+      this.points = 25;
     } 
     else if (this.sequence.length >= 6) 
     {
       this.speed = 500; // Aún más rápido a partir de la 6ta ronda
+      this.points = 50;
     }
     else if (this.sequence.length >= 7)
     {
       this.speed = 300;// Ultimas 2 rondas lo mas rapido
+      this.points = 75;
     }
     else if(this.sequence.length == 8)// A las 8 rondas se gana
     {
