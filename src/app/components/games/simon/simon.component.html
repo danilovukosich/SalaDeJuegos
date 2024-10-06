@@ -13,11 +13,11 @@
     <div class="contenido">
         <div class="simon-container">
 
-            <button class="simon-btn verde"></button>
-            <button class="simon-btn rojo"></button>
-            <button class="simon-btn amarillo"></button>
-            <button class="simon-btn azul"></button>
-            <div class="centro">
+            <button (click)="onClick('verde')" #botonVerde class="simon-btn verde"></button>
+            <button (click)="onClick('rojo')" #botonRojo class="simon-btn rojo"></button>
+            <button (click)="onClick('amarillo')" #botonAmarillo class="simon-btn amarillo"></button>
+            <button (click)="onClick('azul')" #botonAzul class="simon-btn azul"></button>
+            <div (click)="startGame()" class="centro">
                 START
             </div>
             
