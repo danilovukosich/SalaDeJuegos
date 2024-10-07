@@ -7,9 +7,16 @@
         </div>
         <div style="display: table-column; text-align: center;">
             <h1>Simon</h1>
-            <h2 style="cursor:default">Ronda: {{sequence.length}}/8</h2>
+            @if (secuencia.length<10) 
+            {
+                <h2 style="cursor:default">Ronda: {{secuencia.length}}/10</h2>
+            }
+            @else if (secuencia.length>=10) 
+            {
+                <h2 style="cursor:default">Ronda: 10/10</h2>
+            }
         </div>
-        <h2 style="margin-right: 10px; cursor:default">Puntos: {{points}}</h2>
+        <h2 style="margin-right: 10px; cursor:default">Puntos: {{puntos}}</h2>
         
     </nav>
     <br>
@@ -20,6 +27,7 @@
             <button (click)="onClick('rojo')" #botonRojo class="simon-btn rojo"></button>
             <button (click)="onClick('amarillo')" #botonAmarillo class="simon-btn amarillo"></button>
             <button (click)="onClick('azul')" #botonAzul class="simon-btn azul"></button>
+
             <div (click)="startGame()" class="centro">
                 START
             </div>

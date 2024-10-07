@@ -17,7 +17,7 @@ export class ChatService {
 
   GuardarMensaje(mensaje:string)
   {
-    if(mensaje!="" && mensaje!=" " && mensaje!=null && mensaje!=undefined)
+    if(mensaje!="" && mensaje!=" " && mensaje.trim() !== "" && mensaje!=null && mensaje!=undefined)
     {
       let col = collection(this.firestore, 'messages');
       let date = new Date();

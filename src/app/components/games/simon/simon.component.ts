@@ -12,14 +12,14 @@ import { RouterLink } from '@angular/router';
 })
 export class SimonComponent {
 
-  sequence: string[] = [];
-  userSequence: string[] = [];
-  buttons = ['verde', 'rojo', 'amarillo', 'azul'];
+  secuencia: string[] = [];
+  usersecuencia: string[] = [];
+  botones = ['verde', 'rojo', 'amarillo', 'azul'];
   index = 0;
-  playing = false;
-  speed = 1000; // Velocidad inicial (1 segundo entre botones)
+  flagJugando = false;
+  velocidad = 700; // Velocidad inicial (700ms entre botones)
   win!:boolean;
-  points!:number;
+  puntos!:number;
 
   @ViewChild('botonVerde') botonVerde!: ElementRef;
   @ViewChild('botonRojo') botonRojo!: ElementRef;
@@ -29,66 +29,87 @@ export class SimonComponent {
   constructor()
   {
     this.win=false;
-    this.points=0;
+    this.puntos=0;
   }
 
   startGame() 
   {
-    this.sequence = [];
-    this.userSequence = [];
+    this.secuencia = [];
+    this.usersecuencia = [];
     this.index = 0;
-    this.playing = true;
-    this.speed = 1000; // Reiniciar la velocidad en cada nuevo juego
-    this.points=0;
+    this.flagJugando = true;
+    this.velocidad = 700; // reiniciar la velocidad en cada nuevo juego
+    this.puntos=0;
     this.nextRound();
   }
 
   nextRound() 
   {
-    const randomButton = this.buttons[Math.floor(Math.random() * 4)];
-    this.sequence.push(randomButton);
+    const randomButton = this.botones[Math.floor(Math.random() * 4)];
+    this.secuencia.push(randomButton);
     
-    // Aumentar la velocidad a partir de la 3ra y 6ta ronda
-    if (this.sequence.length >= 3 && this.sequence.length < 6) 
-    {
-      this.speed = 750; // Más rápido a partir de la 3ra ronda
-      this.points = 25;
-    } 
-    else if (this.sequence.length >= 6) 
-    {
-      this.speed = 500; // Aún más rápido a partir de la 6ta ronda
-      this.points = 50;
-    }
-    else if (this.sequence.length >= 7)
-    {
-      this.speed = 300;// Ultimas 2 rondas lo mas rapido
-      this.points = 75;
-    }
-    else if(this.sequence.length == 8)// A las 8 rondas se gana
-    {
-      this.playing = false;
-      this.win=true;
-      this.points=100;
-      alert('Usted gano delicidades')
-    }
+   if(this.flagJugando==true)
+   {
+      if(this.secuencia.length < 2)// ronda 1
+      {
+        setTimeout(() => {//tiempo para que no se pise el color al pasar de ronda 
+          this.showsecuencia();
+          }, 500);
+      }
+      if (this.secuencia.length >= 2 && this.secuencia.length <= 4) //rondas 2 a 4
+      {
+        this.velocidad = 500;// Mas Rapido
+        this.puntos = 25;
 
-    setTimeout(() => {//tiempo para que no se pise el color al pasar de ronda
-      this.showSequence();
-    }, 500);
+        setTimeout(() => {
+          this.showsecuencia();
+          }, 500);
+      
+      } 
+      else if (this.secuencia.length > 4 && this.secuencia.length <= 7) //rondas 5 a 7
+      {
+        this.velocidad = 300; // Mas Rapido
+        this.puntos = 50;
+        setTimeout(() => {
+          this.showsecuencia();
+          }, 500);
+      }
+      else if (this.secuencia.length > 7 && this.secuencia.length <= 10)// rondas 8 a 10 
+      {
+        this.velocidad = 250;// Ultimas 2 rondas el nivel mas rapido
+        this.puntos = 75;
+         setTimeout(() => {
+          this.showsecuencia();
+         }, 500);
+      }
+      else if(this.secuencia.length > 10)// A las 10 rondas se gana
+      {
+        this.flagJugando = false;
+        this.win=true;
+        this.puntos=100;
+
+        const audio = new Audio('../../../../assets/sounds/win.mp3');
+        audio.volume = 0.3;// sonido de victoria a la mitad para que no sea tan fuerte
+        audio.play();
+      }
+
+   }
+   
+    
     
   }
 
-  showSequence() 
+  showsecuencia() 
   {
     let delay = 0;
 
-    this.sequence.forEach((color) => {
+    this.secuencia.forEach((color) => {
       setTimeout(() => {
         this.activateButton(color);
       }, delay);
       
       // Usar la velocidad modificada para ajustar el tiempo entre activaciones
-      delay += this.speed;
+      delay += this.velocidad;
     });
   }
 
@@ -97,6 +118,7 @@ export class SimonComponent {
     let buttonElement: ElementRef | undefined;
     let originalColor: string;
     let highlightColor!: string;
+    let sonido!:string;
 
     switch (color) 
     {
@@ -104,23 +126,31 @@ export class SimonComponent {
         buttonElement = this.botonVerde;
         originalColor = 'green';
         highlightColor = 'rgb(4, 206, 4)';
+        sonido='../../../../assets/sounds/green.mp3';
         break;
       case 'rojo':
         buttonElement = this.botonRojo;
         originalColor = 'rgb(177, 2, 2)';
         highlightColor = 'red';
+        sonido='../../../../assets/sounds/red.mp3';
         break;
       case 'amarillo':
         buttonElement = this.botonAmarillo;
         originalColor = 'rgb(182, 182, 4)';
         highlightColor = 'yellow';
+        sonido='../../../../assets/sounds/yellow.mp3';
         break;
       case 'azul':
         buttonElement = this.botonAzul;
         originalColor = 'rgb(4, 126, 156)';
         highlightColor = 'rgb(0, 201, 252)';
+        sonido='../../../../assets/sounds/blue.mp3';
         break;
     }
+
+    const audio = new Audio(sonido);
+    audio.volume = 0.5;
+    audio.play();
 
     if (buttonElement) 
     {
@@ -128,32 +158,33 @@ export class SimonComponent {
 
       setTimeout(() => {
         buttonElement!.nativeElement.style.backgroundColor = originalColor;
-      }, 200);//200 para que no se pisen los colores con el cambio de velocidad
+      }, 180);//200 para que no se pisen los colores con el cambio de velocidad tiene q ser menor a la velocidad maxima de 300ms
     }
   }
 
   onClick(color: string) 
   {
-    if (!this.playing) return;
+    if (!this.flagJugando) return;
 
     this.activateButton(color);
-    this.userSequence.push(color);
+    this.usersecuencia.push(color);
 
-    if (this.userSequence[this.index] === this.sequence[this.index]) 
+    if (this.usersecuencia[this.index] === this.secuencia[this.index]) 
     {
       this.index++;
 
-      if (this.index === this.sequence.length) 
+      if (this.index === this.secuencia.length) 
       {
-        this.userSequence = [];
+        this.usersecuencia = [];
         this.index = 0;
         setTimeout(() => this.nextRound(), 1000);
       }
     } 
     else 
     {
-      this.playing = false;
-      alert('Game Over! Start again.');
+      this.flagJugando = false;
+      const audio = new Audio('../../../../assets/sounds/lose.mp3');
+      audio.play();
     }
   }
 }
