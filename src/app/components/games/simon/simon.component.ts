@@ -89,7 +89,7 @@ export class SimonComponent {
         this.puntos=100;
 
         const audio = new Audio('../../../../assets/sounds/win.mp3');
-        audio.volume = 0.3;// sonido de victoria a la mitad para que no sea tan fuerte
+        audio.volume = 0.2;// sonido de victoria a la mitad para que no sea tan fuerte
         audio.play();
       }
 
