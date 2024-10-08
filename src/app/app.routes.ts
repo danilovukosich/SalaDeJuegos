@@ -8,6 +8,7 @@ import { MayorMenorComponent } from './components/games/mayor-menor/mayor-menor.
 import { AhorcadoComponent } from './components/games/ahorcado/ahorcado.component';
 import { PreguntadosComponent } from './components/games/preguntados/preguntados.component';
 import { SimonComponent } from './components/games/simon/simon.component';
+import { BanderasComponent } from './components/games/banderas/banderas.component';
 
 export const routes: Routes = [
     {path: "", redirectTo:"home", pathMatch:'full'},
@@ -18,7 +19,8 @@ export const routes: Routes = [
     {path:'chat', component:ChatComponent},
     {path:'mayor-menor', component:MayorMenorComponent},
     {path:'ahorcado', component:AhorcadoComponent},
-    {path:'preguntados', component:PreguntadosComponent},
+    // {path:'preguntados', component:PreguntadosComponent},
+    {path:'banderas', component:BanderasComponent},
     {path:'simon', component:SimonComponent},
 
 

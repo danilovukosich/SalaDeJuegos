@@ -1,0 +1,152 @@
+.container{
+    width: 700px;
+    height: 500px;
+    background: transparent 50%;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    color: #fff;
+    /* hacerle espacio entre los borde y el contenido */
+    border-radius: 10px;/* bordes redondos */
+    padding: 30px 40px;
+    border: 2px solid rgba(255, 255, 255, .2);
+    position: relative;
+    /* justify-content: center; *//* centra todo lo que este dentro del container */
+    transition: height .45s ease;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    margin-top: 100px;
+}
+
+.itemsNav{
+    display: flex;
+}
+
+.itemsNav:hover{
+    color: #f1c555;
+}
+
+
+h1{
+    font-size: 36px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    text-align: center;
+}
+
+strong
+{
+    font-size: 26px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+}
+
+p{
+    justify-content: space-between;
+    flex: 1;
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+}
+
+i{
+    right: 20px;
+    top: 50%;
+    transform: translateY(15%); 
+    font-size: 20px;
+    cursor: pointer;
+}
+
+nav h2{
+    font-weight: 5004;
+    cursor: pointer;
+}
+
+
+.mayorBtn:hover{
+    background-color: #202220;
+    color: #fff;
+}
+
+.menorBtn:hover{
+    background-color: #f15555;
+    color: #fff;
+}
+
+.igualBtn:hover{
+    background-color: #64cf4a;
+    color: #fff;
+}
+
+
+
+.containerDos{
+    width: 600px;
+    height: 315px;
+    background: transparent;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    color: #fff;
+    /* hacerle espacio entre los borde y el contenido */
+    border-radius: 10px;/* bordes redondos */
+    padding: 25px 40px;
+    border: 2px solid rgba(255, 255, 255, .2);
+    position: relative;
+
+    transition: height .45s ease;
+    overflow: hidden;
+    margin-bottom: 3%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+footer{
+    text-align: center;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+button{
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+footer button{
+    padding: 9px 25px;
+    border-radius: 30px;
+    color: black;
+    background-color: #fff;
+    border: none;
+    transition: all 0.3s ease 0s;
+    margin-right: 20px;
+}
+
+.corazones{
+    transform: translateY(-12%);
+}
+
+.corazones i{
+    font-size: 30px;
+}
+
+.vidas{
+    display: flex;
+}
+
+.vidas i,h2{
+    cursor: default;
+}
+
+.botonesSelect{
+    display: flex;
+    justify-content: space-evenly;
+    padding-left: 5%;
+    padding-right: 5%;
+}

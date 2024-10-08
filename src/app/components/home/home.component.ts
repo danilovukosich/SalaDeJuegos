@@ -22,10 +22,16 @@ NavigateAhoracdo():void
   this.router.navigate(["ahorcado"]);
 }
 
-NavigatePreguntados():void
+// NavigatePreguntados():void
+// {
+//   this.router.navigate(["preguntados"]);
+// }
+
+NavigateBanderas():void
 {
-  this.router.navigate(["preguntados"]);
+  this.router.navigate(["banderas"]);
 }
+
 
 NavigateSimon():void
 {

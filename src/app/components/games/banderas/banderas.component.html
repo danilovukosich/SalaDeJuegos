@@ -1,0 +1,62 @@
+<div class="general">
+    <div class="container">
+        <nav>
+            <div class="itemsNav" routerLink="home">
+                <i class='bx bx-chevron-left' style='color:#ffffff'  ></i>
+                <h2>Volver</h2>
+            </div>
+
+            
+            <h1>Adivina la bandera</h1>
+            <div class="vidas">
+                <h2 style="margin-right: 10px; cursor:default">Vidas:</h2>
+                <div class="corazones">
+                    @switch (vidas) 
+                    {
+                        @case (0)
+                        {
+                            <i class='bx bx-heart bx-tada' style='color:#f15555' ></i>
+                            <i class='bx bx-heart bx-tada' style='color:#f15555' ></i>
+                            <i class='bx bx-heart bx-tada' style='color:#f15555' ></i>
+                        }
+                        @case (1)
+                        {
+                            <i class='bx bxs-heart' style='color:#f15555'  ></i>
+                            <i class='bx bx-heart bx-tada' style='color:#f15555' ></i>
+                            <i class='bx bx-heart bx-tada' style='color:#f15555' ></i>
+                        }
+                        @case (2)
+                        {
+                            <i class='bx bxs-heart' style='color:#f15555'  ></i>
+                            <i class='bx bxs-heart' style='color:#f15555'  ></i>
+                            <i class='bx bx-heart bx-tada' style='color:#f15555' ></i>
+                        }
+                        @case (3) 
+                        {
+                            <i class='bx bxs-heart' style='color:#f15555'  ></i>
+                            <i class='bx bxs-heart' style='color:#f15555'  ></i>
+                            <i class='bx bxs-heart' style='color:#f15555'  ></i>
+                        }
+
+                    }
+                </div>
+            </div>
+            
+        </nav>
+        <br>
+        <div class="contenido">
+            <!-- <div class="containerDos">
+                
+                 <img src="{{cartaImagen}}" alt=""> 
+            </div> -->
+        </div>
+        <footer>
+            <!-- <div class="botonesSelect">
+                <button (click)="TraerSiguienteCartaMayor()" class="mayorBtn">Mayor</button>
+                <button (click)="TraerSiguienteIgual()" class="igualBtn">Igual</button>
+                <button (click)="TraerSiguienteCartaMenor()" class="menorBtn">Menor</button>
+            </div> -->
+            <h2 style="font-size: xx-large; font-weight: 500;">Puntos: {{puntos}}</h2>
+        </footer>
+    </div>
+</div>
