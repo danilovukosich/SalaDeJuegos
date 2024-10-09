@@ -150,3 +150,56 @@ footer button{
     padding-left: 5%;
     padding-right: 5%;
 }
+
+
+.contenido {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Deja el espacio entre la imagen y los botones */
+    align-items: center;
+    background-color: transparent;
+    padding: 20px;
+    position: relative;
+    margin-bottom: 20px;
+  }
+  
+  .imagen-bandera {
+    max-width: 350px;
+    height: 200px;
+   
+    margin-bottom: 50px;
+  }
+  
+  .buttons-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 10px 10px;
+    width: 100%; 
+    max-width: 400px; 
+    justify-content: center;
+    
+  }
+  
+  .button {
+    padding: 7px 50px;
+    background-color: #fff;
+    color: black;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    width: 300px; 
+    max-width: 400px;
+  }
+  
+  .button:hover {
+    background-color: #f1c555;
+  }
+  
+  /* botones pegados al fondo */
+  .buttons-container {
+    margin-top: auto;
+    margin-bottom: 0;
+  }

@@ -76,16 +76,16 @@ export class MayorMenorComponent {
       console.log(valorActual); */
 
       if(valorSiguiente > valorActual)
-        {
-          this.puntos+=5;
-        }
-        else
-        {
-          this.vidas-=1;
-        }
+      {
+        this.puntos+=5;
+      }
+      else
+      {
+        this.vidas-=1;
+      }
 
-        this.cartaActual=this.cartaSiguiente;
-        this.cartaImagen=this.cartaActual.image;
+      this.cartaActual=this.cartaSiguiente;
+      this.cartaImagen=this.cartaActual.image;
 
     });
   }

@@ -45,10 +45,18 @@
         </nav>
         <br>
         <div class="contenido">
-            <!-- <div class="containerDos">
-                
-                 <img src="{{cartaImagen}}" alt=""> 
-            </div> -->
+            @if (imagenBandera!="") 
+            {
+                <img src="{{imagenBandera}}" alt="Imagen" class="imagen-bandera">
+            }
+            
+            <div class="buttons-container">
+                <button class="button">{{pais1}}</button>
+                <button class="button">{{pais2}}</button>
+                <button class="button">{{pais3}}</button>
+                <button class="button">{{pais4}}</button>
+            </div>
+
         </div>
         <footer>
             <!-- <div class="botonesSelect">
