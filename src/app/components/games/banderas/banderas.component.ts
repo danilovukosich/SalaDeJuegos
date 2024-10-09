@@ -19,36 +19,25 @@ export class BanderasComponent {
   banderaCorrecta!:string;
   imagenBandera:string = "";
 
-  banderasIncorrectas:string[] = [];
+  paises!:any[];
+  opcionesPaises:string[]=[];
 
-  paises!:any;
-
-  pais1!:string;
-  pais2!:string;
-  pais3!:string;
-  pais4!:string;
-
-
-
+  respuestaSeleccionada!: string; 
+  esCorrecta: boolean = false;
   
 
   constructor(private banderas:BanderasService)
   {
     this.vidas = 3;
     this.puntos = 0;
-    // this.imagenBandera="../../../../assets/images/banderas.png";
+    this.imagenBandera="../../../../assets/images/banderaVacia.png";
     
   }
 
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
-    this.TraerBanderas();
-
-    setTimeout(() => {//tiempo para que no se pise el color al pasar de ronda 
-      this.GetPaisCorrecto();
-      }, 2000);
-    
+    this.TraerBanderas();    
     
   }
 
@@ -57,24 +46,93 @@ export class BanderasComponent {
     this.banderas.TraerPaises().subscribe((paises)=>{
       this.paises = paises;
       console.log(this.paises);
-
+      this.IniciarRonda();
     });
   }
 
-  GetPaisCorrecto()
+  // iniciar una nueva ronda
+  IniciarRonda(): void 
   {
-    let indicePais =Math.round(Math.random() * 250) ;
+    this.opcionesPaises = [];
+    const indicePaisCorrecto = Math.floor(Math.random() * this.paises.length);
+    const paisCorrecto = this.paises[indicePaisCorrecto];
 
-    console.log(indicePais);
-    console.log(this.paises[indicePais]);
-    
-    this.imagenBandera = this.paises[indicePais].flags.png;
-    this.pais1=this.paises[indicePais].name.common;
+    // asigna la bandera e información correcta
+    this.imagenBandera = paisCorrecto.flags.png;
+    this.banderaCorrecta = paisCorrecto.name.common;
 
-    this.pais2 = this.paises[Math.round(Math.random() * 250)].name.common;
-    this.pais3 = this.paises[Math.round(Math.random() * 250)].name.common;
-    this.pais4 = this.paises[Math.round(Math.random() * 250)].name.common;
+    //la opción correcta
+    this.opcionesPaises.push(this.banderaCorrecta);
+
+    //3 opcionesPaises incorrectas
+    while (this.opcionesPaises.length < 4) 
+    {
+      const indicePaisIncorrecto = Math.floor(Math.random() * this.paises.length);
+      const paisIncorrecto = this.paises[indicePaisIncorrecto].name.common;
+
+      // Evitar duplicados
+      if (!this.opcionesPaises.includes(paisIncorrecto)) 
+      {
+        this.opcionesPaises.push(paisIncorrecto);
+      }
+    }
+
+    //que la correcta no esté siempre en la misma posición
+    this.opcionesPaises = this.MezclarOpciones(this.opcionesPaises);
+    this.respuestaSeleccionada = ''; // Reinicia la selección
 
   }
+
+  // mezclar las opcionesPaises
+  MezclarOpciones(opciones: string[]): string[] 
+  {
+    for (let i = opciones.length - 1; i > 0; i--) 
+    {
+      const j = Math.floor(Math.random() * (i + 1));
+      [opciones[i], opciones[j]] = [opciones[j], opciones[i]];
+    }
+
+    return opciones;
+  }
+
+  // verificar si la opción seleccionada es correcta
+  VerificarRespuesta(opcionSeleccionada: string): void 
+  {
+
+    this.respuestaSeleccionada = opcionSeleccionada;
+    this.esCorrecta = opcionSeleccionada === this.banderaCorrecta;
+
+    setTimeout(() => {
+      if (opcionSeleccionada === this.banderaCorrecta) 
+      {
+        this.puntos+=5;
+        // alert('¡Correcto!');
+      } else {
+        this.vidas--;
+        // alert('Incorrecto. Vidas restantes: ' + this.vidas);
+      }
+
+      // comproba si el juego sigue o si se han acabado las vidas
+      if (this.vidas > 0) 
+      {
+        this.IniciarRonda(); // Inicia una nueva ronda
+      } 
+      else 
+      {
+        //alert('Juego terminado. Puntos: ' + this.puntos);
+        
+      }
+    }, 500);
+  }
+
+  ReiniciarJuego()
+  {
+    this.vidas=3;
+    this.puntos=0;
+    this.opcionesPaises = [];
+    this.IniciarRonda();
+  }
+
+  
 
 }

@@ -1,6 +1,6 @@
 .container{
     width: 700px;
-    height: 500px;
+    height: 550px;
     background: transparent 50%;
     backdrop-filter: blur(20px);
     box-shadow: 0 0 10px rgba(0, 0, 0, .2);
@@ -121,8 +121,6 @@ button{
 footer button{
     padding: 9px 25px;
     border-radius: 30px;
-    color: black;
-    background-color: #fff;
     border: none;
     transition: all 0.3s ease 0s;
     margin-right: 20px;
@@ -203,3 +201,29 @@ footer button{
     margin-top: auto;
     margin-bottom: 0;
   }
+
+.correct {
+    background-color: green;
+}
+
+.incorrect {
+    background-color: rgb(231, 52, 52);
+}
+
+
+.restart-button{
+    padding: 7px 50px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    width: 300px; 
+    max-width: 400px;
+    background-color: #f1c555; 
+    color: #000000;
+}
+
+.restart-button:hover{
+    background-color: #53c736;
+    color: #fff;
+}
