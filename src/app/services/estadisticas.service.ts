@@ -41,9 +41,9 @@ export class EstadisticasService {
     let col = collection(this.firestore, "stats");
     const q = query(
       col,
-      where('game', '==', juego),  // Filtro por el campo 'juego'
-      orderBy('points', 'desc'),         // Ordenar por 'points' de mayor a menor
-      limit(5)                             // Limitar a los primeros 5 resultados
+      where('game', '==', juego),// filtro por el campo 'juego'
+      orderBy('points', 'desc'),// ordenar por 'points' de mayor a menor
+      limit(5)//primeros 5 resultados
     );
 
 

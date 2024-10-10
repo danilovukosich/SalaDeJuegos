@@ -59,13 +59,13 @@ export class BanderasComponent {
     const indicePaisCorrecto = Math.floor(Math.random() * this.paises.length);
     const paisCorrecto = this.paises[indicePaisCorrecto];
 
-    // asigna la bandera e información correcta
+    // asigna la bandera e informacion correcta
     this.imagenBandera = paisCorrecto.flags.png;
     this.banderaCorrecta = paisCorrecto.translations.spa.common;
 
     
 
-    //la opción correcta
+    //la opcion correcta
     this.opcionesPaises.push(this.banderaCorrecta);
 
     //3 opcionesPaises incorrectas
@@ -74,14 +74,14 @@ export class BanderasComponent {
       const indicePaisIncorrecto = Math.floor(Math.random() * this.paises.length);
       const paisIncorrecto = this.paises[indicePaisIncorrecto].translations.spa.common;
 
-      // Evitar duplicados
+      // duplicados
       if (!this.opcionesPaises.includes(paisIncorrecto)) 
       {
         this.opcionesPaises.push(paisIncorrecto);
       }
     }
 
-    //que la correcta no esté siempre en la misma posición
+    //que la correcta no este siempre en la misma posicion
     this.opcionesPaises = this.MezclarOpciones(this.opcionesPaises);
     this.respuestaSeleccionada = ''; // Reinicia la selección
 
@@ -99,7 +99,7 @@ export class BanderasComponent {
     return opciones;
   }
 
-  // verificar si la opción seleccionada es correcta
+  // verificar si la opcion seleccionada es correcta
   VerificarRespuesta(opcionSeleccionada: string): void 
   {
 
