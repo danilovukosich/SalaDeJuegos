@@ -15,6 +15,9 @@ export class AhorcadoComponent {
   vidas!:number;
   puntos!:number;
 
+  gano!:boolean;
+  perdio!:boolean;
+
 
   palabras: string[] = [
     'GATITO', 'CIELOSO', 'SOLANA', 'LLUVIA', 'CASTILLO', 'PALABRA', 'MURALLA', 'CIENCIA', 'TRENES',
@@ -23,6 +26,7 @@ export class AhorcadoComponent {
     'PARQUES', 'ESTRELLA', 'COMEDOR', 'FLORERO', 'VENTILAR', 'MUSEO', 'AVIONES', 'CEREZAS', 'LIBERAR', 'MOTIVOS',
     'MANTEROS', 'ANDENES', 'SALUDOS', 'CARRERA', 'NAVEGAR', 'PRENDAS', 'CAMINAR', 'BATALLA', 'MONTES', 'HORMIGA'
   ];
+
   palabraSeleccionada: string = '';
   palabraOculta: string[] = [];
   letrasSeleccionadas: string[] = [];
@@ -71,24 +75,32 @@ export class AhorcadoComponent {
     // Verifica ganado o perdido
     if (this.vidas === 0) 
     {
-      alert('¡Has perdido! La palabra era: ' + this.palabraSeleccionada);
+      // alert('¡Has perdido! La palabra era: ' + this.palabraSeleccionada);
       this.puntos=0;
-      this.reiniciarJuego();
+      this.perdio=true;
+      setTimeout(()=>{
+
+        this.reiniciarJuego();
+      },3000);
     }
 
     if (!this.palabraOculta.includes('_')) 
     {
-      setTimeout(()=>{
-
-      },1000);
-      alert('¡Felicidades, has ganado!');
+      // alert('¡Felicidades, has ganado!');
+      this.gano=true;
       this.puntos += 25; // Puntos extra por ganar
-      this.reiniciarJuego();
+      setTimeout(()=>{
+        this.reiniciarJuego();
+
+      },3000);
     }
   }
 
   reiniciarJuego() 
   {
+    this.gano=false;
+    this.perdio=false;
+
     this.iniciarJuego();
   }
 

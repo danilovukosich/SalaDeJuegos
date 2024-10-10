@@ -15,38 +15,51 @@
     <br>
     <div class="contenido">
         <div class="game">
-            @switch(vidas)
+
+            @if (gano) 
             {
-                @case(6)
-                {
-                    <img src="../../../../assets/images/ahorcado1.png" alt="">
-                }
-                @case(5)
-                {
-                    <img src="../../../../assets/images/ahorcado2.png" alt="">
-                }
-                @case(4)
-                {
-                    <img src="../../../../assets/images/ahorcado3.png" alt="">
-                }
-                @case(3)
-                {
-                    <img src="../../../../assets/images/ahorcado4.png" alt="">
-                }
-                @case(2)
-                {
-                    <img src="../../../../assets/images/ahorcado5.png" alt="">
-                }
-                @case(1)
-                {
-                    <img src="../../../../assets/images/ahorcado6.png" alt="">
-                }
-                @case(0)
-                {
-                    <img src="../../../../assets/images/ahorcado7.png" alt="">
-                }
+                <h2 style="font-weight: 600; font-size: x-large; background-color: #f1c555; padding: 10px 10px; border-radius: 10px; color: black;">¡Gano!, la palabra era {{palabraSeleccionada}}</h2>
             }
-            <h2>{{ palabraOculta.join(' ') }}</h2>
+            @else if (perdio) 
+            {
+                <h2 style="font-weight: 600; font-size: x-large; background-color: #f1c555; padding: 10px 10px; border-radius: 10px; color: black;">¡Has perdido!, la palabra era {{palabraSeleccionada}}</h2>
+            }
+            @else
+            {
+                @switch(vidas)
+                {
+                    @case(6)
+                    {
+                        <img src="../../../../assets/images/ahorcado1.png" alt="">
+                    }
+                    @case(5)
+                    {
+                        <img src="../../../../assets/images/ahorcado2.png" alt="">
+                    }
+                    @case(4)
+                    {
+                        <img src="../../../../assets/images/ahorcado3.png" alt="">
+                    }
+                    @case(3)
+                    {
+                        <img src="../../../../assets/images/ahorcado4.png" alt="">
+                    }
+                    @case(2)
+                    {
+                        <img src="../../../../assets/images/ahorcado5.png" alt="">
+                    }
+                    @case(1)
+                    {
+                        <img src="../../../../assets/images/ahorcado6.png" alt="">
+                    }
+                    @case(0)
+                    {
+                        <img src="../../../../assets/images/ahorcado7.png" alt="">
+                    }
+                }
+                <h2>{{ palabraOculta.join(' ') }}</h2>
+            }
+
         </div>
         <div class="keyboard">
             <div class="row">
