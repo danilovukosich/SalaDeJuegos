@@ -28,6 +28,12 @@
                                     <br>
                                     <label style="color: rgb(233, 66, 66);" for="nombre">Ingrese nombre</label>
                                 }
+                                @if(formSubido && nombre?.hasError('pattern')) 
+                                {
+                                    <br>
+                                    <label style="color: rgb(233, 66, 66);" for="nombre">Solo letras!</label>
+                                }
+
 
                             </div>
                             <div class="input-box">
@@ -36,6 +42,11 @@
                                 {
                                     <br>
                                     <label style="color: rgb(233, 66, 66);" for="nombre">Ingrese apellido</label>
+                                }
+                                @if(formSubido && apellido?.hasError('pattern')) 
+                                {
+                                    <br>
+                                    <label style="color: rgb(233, 66, 66);" for="nombre">Solo letras!</label>
                                 }
                             </div>
                         </div>
@@ -82,22 +93,23 @@
                             <div>
                                 <h2 style="color: #f1c555;">Nos recomendarias?</h2>
                             
-                                <input  value="si" name="si-no" checked type="radio">Si
-                                <input  value="no" name="si-no" type="radio">No
+                                <input formControlName="recomendaria" value="si"  checked type="radio">Si
+                                <input formControlName="recomendaria" value="no"  type="radio">No
                                     
                             </div>
                             <div style="align-items: start;">
-                                <h2 style="color: #f1c555;">Juegos Favoritos:</h2>
-                                <div style="align-items: start;">
-                                    <input  value="banderas" type="checkbox">Banderas
+                                <h2 style="color: #f1c555;">Juego Favorito:</h2>
+                                <select formControlName="juegoFavorito" >
+                                    <option value="banderas">Banderas</option>
+                                    <option value="ahorcado">Ahorcado</option>
+                                    <option value="mayormenor">Mayor menor</option>
+                                    <option value="simon">Simon</option>
+                                </select>
+                                @if( formSubido && juegoFavorito?.hasError('required')) 
+                                {
                                     <br>
-                                    <input value="ahorcado" type="checkbox">Ahorcado
-                                    <br>
-                                    <input value="mayormenor" type="checkbox">Mayor menor
-                                    <br>
-                                    <input value="simon" type="checkbox">Simon
-        
-                                </div>
+                                    <label style="color: rgb(233, 66, 66);" for="nombre">Complete el campo...</label>
+                                }
                             </div>
                         </div>
                     </div>
@@ -106,7 +118,7 @@
                 </div>
                 <footer>
        
-                    <button  class="cancelarBtn">Cancelar</button>
+                    <button class="cancelarBtn" routerLink="home">Cancelar</button>
                     <button class="enviarBtn" type="submit">Enviar</button>
                     
                 </footer>

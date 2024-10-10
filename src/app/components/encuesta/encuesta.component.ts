@@ -32,6 +32,8 @@ export class EncuestaComponent {
       edad: new FormControl("", [Validators.required, Validators.min(18), Validators.max(99)]),
       telefono: new FormControl("", [Validators.required, Validators.pattern('^[0-9]+$')]),
       conocio: new FormControl("", [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]),
+      recomendaria: new FormControl("si"),
+      juegoFavorito: new FormControl("banderas",[Validators.required]) 
     });
 
 
@@ -54,7 +56,9 @@ export class EncuestaComponent {
                                 "apellido": this.form.get('apellido')?.value, 
                                 "edad": this.form.get('edad')?.value,
                                 "telefono": this.form.get('telefono')?.value,
-                                "conocio": this.form.get('conocio')?.value,});
+                                "conocio": this.form.get('conocio')?.value,
+                                "recomendaria": this.form.get('recomendaria')?.value,
+                                "favorito":this.form.get('juegoFavorito')?.value});
 
 
                                 this.toast.success("¡Encuesta enviada!");
@@ -92,6 +96,12 @@ export class EncuestaComponent {
   {
     return this.form.get('conocio');
   }
+
+  get juegoFavorito()
+  {
+    return this.form.get('juegosFavoritos');
+  }
+
 
   
 
