@@ -1,6 +1,6 @@
 <div class="container">
     <div class="imagen-texto">
-        <article (click)="NavigateBanderas()">
+        <article (click)="VerifyCurrentUser() ? NavigateBanderas() : null">
             <img src="../../../assets/images/banderas2.png" alt="">
             <img src="../../../assets/images/banderasPNG2.png" alt="">
         </article>
@@ -10,7 +10,7 @@
         <h3>banderas</h3>
     </div>
     <div class="imagen-texto">
-        <article (click)="NavigateAhoracdo()">
+        <article (click)="VerifyCurrentUser() ? NavigateAhoracdo() : null">
             <img src="../../../assets/images/ahoracdoFondo2.png" alt="">
             <img src="../../../assets/images/ahoracadoPNG.png" alt="">
         </article>
@@ -19,7 +19,7 @@
         <h3>Ahorcado</h3>
     </div>
     <div class="imagen-texto">
-        <article (click)="NavigateMayorMenor()">
+        <article (click)="VerifyCurrentUser() ? NavigateMayorMenor() : null">
             <img src="../../../assets/images/cartasFondo2.png" alt="">
             <img src="../../../assets/images/cartasPNG2.png" alt="">
         </article>
@@ -28,7 +28,7 @@
         <h3>Mayor o menor</h3>
     </div>
     <div class="imagen-texto">
-        <article (click)="NavigateSimon()">
+        <article (click)="VerifyCurrentUser() ? NavigateSimon() : null">
             <img src="../../../assets/images/SimonFONDO.png" alt="">
             <img src="../../../assets/images/simoPNG.png" alt="">
         </article>
