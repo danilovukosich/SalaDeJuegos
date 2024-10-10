@@ -2,6 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { EstadisticasService } from '../../../services/estadisticas.service';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-simon',
@@ -17,7 +19,7 @@ export class SimonComponent {
   botones = ['verde', 'rojo', 'amarillo', 'azul'];
   index = 0;
   flagJugando = false;
-  velocidad = 700; // Velocidad inicial (700ms entre botones)
+  velocidad = 700; // velocidad inicial (700ms entre botones)
   win!:boolean;
   puntos!:number;
 
@@ -26,7 +28,7 @@ export class SimonComponent {
   @ViewChild('botonAmarillo') botonAmarillo!: ElementRef;
   @ViewChild('botonAzul') botonAzul!: ElementRef;
 
-  constructor()
+  constructor(private stats:EstadisticasService, private authService:AuthService)
   {
     this.win=false;
     this.puntos=0;
@@ -88,9 +90,10 @@ export class SimonComponent {
         this.win=true;
         this.puntos=100;
 
-        const audio = new Audio('../../../../assets/sounds/win.mp3');
+        const audio = new Audio('../../../../assets/sounds/win.mp3');//gana
         audio.volume = 0.2;// sonido de victoria a la mitad para que no sea tan fuerte
         audio.play();
+        this.GameOver();
       }
 
    }
@@ -108,7 +111,6 @@ export class SimonComponent {
         this.activateButton(color);
       }, delay);
       
-      // Usar la velocidad modificada para ajustar el tiempo entre activaciones
       delay += this.velocidad;
     });
   }
@@ -182,9 +184,35 @@ export class SimonComponent {
     } 
     else 
     {
+      this.GameOver();
       this.flagJugando = false;
-      const audio = new Audio('../../../../assets/sounds/lose.mp3');
+      const audio = new Audio('../../../../assets/sounds/lose.mp3');//pierde
       audio.play();
+
+
     }
+  }
+
+
+  GameOver()
+  {
+    if(this.VerifyCurrentUser())
+    {
+      this.stats.GuardarEstadisticas("simon", this.puntos);
+    }
+  }
+
+
+  VerifyCurrentUser()
+  {
+    if(this.authService.GetUser()!=null)
+    {
+      return true;
+    }
+    else
+    {
+      return false;
+    }
+
   }
 }

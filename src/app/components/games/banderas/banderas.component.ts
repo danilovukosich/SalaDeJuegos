@@ -3,6 +3,8 @@ import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { BanderasService } from '../../../services/banderas.service';
 import { documentId } from 'firebase/firestore';
+import { EstadisticasService } from '../../../services/estadisticas.service';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-banderas',
@@ -26,7 +28,7 @@ export class BanderasComponent {
   esCorrecta: boolean = false;
   
 
-  constructor(private banderas:BanderasService)
+  constructor(private banderas:BanderasService, private stats:EstadisticasService, private authService:AuthService)
   {
     this.vidas = 3;
     this.puntos = 0;
@@ -120,6 +122,7 @@ export class BanderasComponent {
       else 
       {
         //alert('Juego terminado. Puntos: ' + this.puntos);
+        this.GameOver();
         console.log("perdio");
         
       }
@@ -132,6 +135,29 @@ export class BanderasComponent {
     this.puntos=0;
     this.opcionesPaises = [];
     this.IniciarRonda();
+  }
+
+
+  GameOver()
+  {
+    if(this.VerifyCurrentUser())
+    {
+      this.stats.GuardarEstadisticas("banderas", this.puntos);
+    }
+  }
+
+
+  VerifyCurrentUser()
+  {
+    if(this.authService.GetUser()!=null)
+    {
+      return true;
+    }
+    else
+    {
+      return false;
+    }
+
   }
 
   
