@@ -120,6 +120,7 @@ export class BanderasComponent {
       else 
       {
         //alert('Juego terminado. Puntos: ' + this.puntos);
+        console.log("perdio");
         
       }
     }, 500);

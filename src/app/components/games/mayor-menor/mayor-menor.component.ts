@@ -170,16 +170,11 @@ export class MayorMenorComponent {
   }
   
 
-  ngAfterViewChecked()//chekea cambios en la view
+  ReiniciarJuego()
   {
-    if(this.vidas==0)
-    {
-      this.toast.danger("Sus puntos fueron: "+this.puntos, "PERDIO");
-      this.puntos = 0;
-      this.vidas = 3;
-
-      this.TraerMazo();
-    }
+    this.vidas=3;
+    this.puntos=0;
+    this.TraerMazo();
   }
 
 

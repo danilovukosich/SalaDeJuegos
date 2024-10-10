@@ -49,28 +49,34 @@
             <img src="{{imagenBandera}}" alt="Imagen" class="imagen-bandera">
             
             <div class="buttons-container">
-                @for (item of opcionesPaises; track $index) 
+
+                @if(vidas>=1)
                 {
-                    <button (click)="VerificarRespuesta(item)" 
-                    class="button" 
-                    [ngStyle]="{'background-color': item === respuestaSeleccionada 
-                                            ? (esCorrecta ? '#53c736' : 'rgb(231, 52, 52)') 
-                                            : 'white'}">
-                    {{item}}</button>
+                    @for (item of opcionesPaises; track $index) 
+                    {
+                        <button (click)="VerificarRespuesta(item)" 
+                        class="button" 
+                        [ngStyle]="{'background-color': item === respuestaSeleccionada 
+                                                ? (esCorrecta ? '#53c736' : 'rgb(231, 52, 52)') 
+                                                : 'white'}">
+                        {{item}}</button>
+                    }
+                }
+                @else if (vidas<1) 
+                {   
+                    <button (click)="ReiniciarJuego()" class="restart-button" >Restart</button>
                 }
             </div>
 
         </div>
         <footer>
-            @if(vidas>=1)
+            @if(vidas<1)
             {
-                <h2 style="font-size: xx-large; font-weight: 500;">Puntos: {{puntos}}</h2>
-            }
-            @else if (vidas<1) 
-            {   
                 <h2 style="font-size: xx-large; font-weight: 500;">¡Has perdido!</h2>
-                <button (click)="ReiniciarJuego()" class="restart-button" >Restart</button>
             }
+            <h2 style="font-size: xx-large; font-weight: 500;">Puntos: {{puntos}}</h2>
+        
+            
         </footer>
     </div>
 </div>

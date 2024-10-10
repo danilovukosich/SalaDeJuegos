@@ -118,7 +118,7 @@ button{
     background-color: transparent;
 }
 
-footer button{
+.botonesSelect button{
     padding: 9px 25px;
     border-radius: 30px;
     color: black;
@@ -156,6 +156,21 @@ footer button{
     display: flex; 
     justify-content: center;
     margin-top: 50px;
+}
+
+.restart-button{
+    padding: 9px 25px;
+    border-radius: 30px;
+    color: black;
+    background-color: #f1c555;
+    border: none;
+    transition: all 0.3s ease 0s;
+    margin-right: 20px;
+}
+
+.restart-button:hover{
+    background-color: #53c736;
+    color: #fff;
 }
 
 

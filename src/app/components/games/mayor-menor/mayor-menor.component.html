@@ -51,11 +51,19 @@
             </div>
         </div>
         <footer>
-            <div class="botonesSelect">
-                <button (click)="TraerSiguienteCartaMayor()" class="mayorBtn">Mayor</button>
-                <button (click)="TraerSiguienteIgual()" class="igualBtn">Igual</button>
-                <button (click)="TraerSiguienteCartaMenor()" class="menorBtn">Menor</button>
-            </div>
+            @if (vidas>=1)
+            {
+                <div class="botonesSelect">
+                    <button (click)="TraerSiguienteCartaMayor()" class="mayorBtn">Mayor</button>
+                    <button (click)="TraerSiguienteIgual()" class="igualBtn">Igual</button>
+                    <button (click)="TraerSiguienteCartaMenor()" class="menorBtn">Menor</button>
+                </div>
+            }
+            @else
+            {   
+                <h2 style="font-size: xx-large; font-weight: 500;">¡Has perdido!</h2>
+                <button (click)="ReiniciarJuego()" class="restart-button" >Restart</button>
+            }
             <h2 style="font-size: xx-large; font-weight: 500;">Puntos: {{puntos}}</h2>
         </footer>
     </div>
