@@ -2,6 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { EstadisticasService } from '../../../services/estadisticas.service';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-ahorcado',
@@ -21,8 +23,8 @@ export class AhorcadoComponent {
 
   palabras: string[] = [
     'GATITO', 'CIELOSO', 'SOLANA', 'LLUVIA', 'CASTILLO', 'PALABRA', 'MURALLA', 'CIENCIA', 'TRENES',
-    'ANILLOS', 'PEQUEÑO', 'CUADERNO', 'PARAGUAS', 'PELIGRO', 'JARDINES', 'MELONERO', 'BOSQUES', 'RELOJES', 'ESPINAS',
-    'COLORES', 'TIGRES', 'BOTELLA', 'PIZARRON', 'LAMPARAS', 'SOMBRA', 'MUÑECO', 'TIJERAS', 'CUCHARAS', 'FRUTERO',
+    'ANILLOS', 'CUADERNO', 'PARAGUAS', 'PELIGRO', 'JARDINES', 'MELONERO', 'BOSQUES', 'RELOJES', 'ESPINAS',
+    'COLORES', 'TIGRES', 'BOTELLA', 'PIZARRON', 'LAMPARAS', 'SOMBRA', 'TIJERAS', 'CUCHARAS', 'FRUTERO',
     'PARQUES', 'ESTRELLA', 'COMEDOR', 'FLORERO', 'VENTILAR', 'MUSEO', 'AVIONES', 'CEREZAS', 'LIBERAR', 'MOTIVOS',
     'MANTEROS', 'ANDENES', 'SALUDOS', 'CARRERA', 'NAVEGAR', 'PRENDAS', 'CAMINAR', 'BATALLA', 'MONTES', 'HORMIGA'
   ];
@@ -32,7 +34,7 @@ export class AhorcadoComponent {
   letrasSeleccionadas: string[] = [];
 
 
-  constructor() 
+  constructor(private stats:EstadisticasService, private authService:AuthService) 
   {
     this.puntos=0;
     this.vidas=6;//seis vidas por cada parte del cuerpo (cabeza, torso, 2 brazos, 2 piernas)
@@ -41,7 +43,7 @@ export class AhorcadoComponent {
 
   iniciarJuego() 
   {
-    // Selecciona una palabra aleatoria y oculta con guiones bajos
+    // palabra aleatoria y oculta con guiones bajos
     this.palabraSeleccionada = this.palabras[Math.floor(Math.random() * this.palabras.length)];
     this.palabraOculta = Array(this.palabraSeleccionada.length).fill('_');
     this.letrasSeleccionadas = [];
@@ -67,19 +69,20 @@ export class AhorcadoComponent {
           this.palabraOculta[i] = letra;
         }
       }
-      this.puntos += 5; // Suma puntos si acierta
+      this.puntos += 5; // sma puntos si acierta
     } else {
-      this.vidas--; // Resta una vida si falla
+      this.vidas--; // resta una vida si falla
     }
 
-    // Verifica ganado o perdido
+    // verifica si gano o perdio
     if (this.vidas === 0) 
     {
       // alert('¡Has perdido! La palabra era: ' + this.palabraSeleccionada);
+      this.GameOver();
       this.puntos=0;
       this.perdio=true;
       setTimeout(()=>{
-
+        
         this.reiniciarJuego();
       },3000);
     }
@@ -88,10 +91,9 @@ export class AhorcadoComponent {
     {
       // alert('¡Felicidades, has ganado!');
       this.gano=true;
-      this.puntos += 25; // Puntos extra por ganar
+      this.puntos += 25; // 25 puntos extra por ganar
       setTimeout(()=>{
         this.reiniciarJuego();
-
       },3000);
     }
   }
@@ -110,6 +112,27 @@ export class AhorcadoComponent {
   }
 
 
+  GameOver()
+  {
+    if(this.VerifyCurrentUser())
+    {
+      this.stats.GuardarEstadisticas("ahorcado", this.puntos);
+    }
+  }
+
+
+  VerifyCurrentUser()
+  {
+    if(this.authService.GetUser()!=null)
+    {
+      return true;
+    }
+    else
+    {
+      return false;
+    }
+
+  }
 
 
   
