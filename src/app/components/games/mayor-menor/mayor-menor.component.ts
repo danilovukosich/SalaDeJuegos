@@ -5,6 +5,9 @@ import { Subscription } from 'rxjs';
 import { CartasService } from '../../../services/cartas.service';
 import { CommonModule } from '@angular/common';
 import { NgToastService } from 'ng-angular-popup';
+import { EstadisticasService } from '../../../services/estadisticas.service';
+import { Auth } from '@angular/fire/auth';
+import { AuthService } from '../../../services/auth.service';
 
 
 
@@ -30,7 +33,7 @@ export class MayorMenorComponent {
   //SUBCRIPTION
   subscripcion!:Subscription;
 
-  constructor(private cartaService:CartasService, private toast:NgToastService){}
+  constructor(private cartaService:CartasService, private toast:NgToastService, private stats:EstadisticasService, private authService:AuthService){}
 
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
@@ -84,6 +87,11 @@ export class MayorMenorComponent {
         this.vidas-=1;
       }
 
+      if (this.vidas < 1) 
+      {
+        this.GameOver();//guarda estadisticas
+      }
+
       this.cartaActual=this.cartaSiguiente;
       this.cartaImagen=this.cartaActual.image;
 
@@ -105,16 +113,21 @@ export class MayorMenorComponent {
       
       
       if(valorSiguiente < valorActual)
-        {
-          this.puntos+=5;
-        }
-        else
-        {
-          this.vidas-=1;
-        }
+      {
+        this.puntos+=5;
+      }
+      else
+      {
+        this.vidas-=1;
+      }
 
-        this.cartaActual=this.cartaSiguiente;
-        this.cartaImagen=this.cartaActual.image;
+      if (this.vidas < 1) 
+      {
+        this.GameOver();
+      }
+
+      this.cartaActual=this.cartaSiguiente;
+      this.cartaImagen=this.cartaActual.image;
 
     });
   }
@@ -134,16 +147,21 @@ export class MayorMenorComponent {
       
       
       if(valorSiguiente == valorActual)
-        {
-          this.puntos+=15;
-        }
-        else
-        {
-          this.vidas-=1;
-        }
+      {
+        this.puntos+=15;
+      }
+      else
+      {
+        this.vidas-=1;
+      }
 
-        this.cartaActual=this.cartaSiguiente;
-        this.cartaImagen=this.cartaActual.image;
+      if (this.vidas < 1) 
+      {
+        this.GameOver();
+      }
+
+      this.cartaActual=this.cartaSiguiente;
+      this.cartaImagen=this.cartaActual.image;
 
     });
   }
@@ -170,11 +188,32 @@ export class MayorMenorComponent {
   }
   
 
+  GameOver()
+  {
+    if(this.VerifyCurrentUser())
+    {
+      this.stats.GuardarEstadisticas("mayorMenor", this.puntos);
+    }
+  }
+
   ReiniciarJuego()
   {
     this.vidas=3;
     this.puntos=0;
     this.TraerMazo();
+  }
+
+  VerifyCurrentUser()
+  {
+    if(this.authService.GetUser()!=null)
+    {
+      return true;
+    }
+    else
+    {
+      return false;
+    }
+
   }
 
 

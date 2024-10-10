@@ -2,10 +2,37 @@
     <h1>Estadisticas</h1>
     <br>
     <div class="contenido">
-        <p>
-            <br>
-            <strong>📊 Aca,</strong>  estaran las estadisticas...
-        </p>
+        <div class="botonesSelect">
+            <button (click)="LlenarTabla('banderas')" >Banderas</button>
+            <button (click)="LlenarTabla('ahorcado')" >Ahorcado</button>
+            <button (click)="LlenarTabla('mayorMenor')" >Mayor o menor</button>
+            <button (click)="LlenarTabla('simon')" >Simon</button>
+        </div>
+        <div class="containerDos">
+            <h2 style="font-weight: 600; font-size: x-large; background-color: #f1c555; padding: 10px 10px; border-radius: 10px; color: black;">{{juego}}</h2>
+            <h2>Top 5 🌎</h2>
+            <table class="tabla-puntos">
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Usuario</th>
+                        <th>Puntos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (item of estadisticas; track $index) 
+                    {
+                        <tr>
+                            <td>{{item.fecha}}</td>
+                            <td>{{item.user}}</td>
+                            <td>{{item.points}}</td>
+                        </tr>
+                    }    
+                </tbody>
+            </table>
+            
+
+        </div>
 
     </div>
 
