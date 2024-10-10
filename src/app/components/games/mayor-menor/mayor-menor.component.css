@@ -65,17 +65,17 @@ nav h2{
 }
 
 
-.mayorBtn:hover{
+footer .botonesSelect .mayorBtn:hover{
     background-color: #202220;
     color: #fff;
 }
 
-.menorBtn:hover{
+footer .botonesSelect .menorBtn:hover{
     background-color: #f15555;
     color: #fff;
 }
 
-.igualBtn:hover{
+footer .botonesSelect .igualBtn:hover{
     background-color: #64cf4a;
     color: #fff;
 }
