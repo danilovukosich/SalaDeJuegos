@@ -7,7 +7,7 @@ import { map, Observable } from 'rxjs';
 })
 export class BanderasService {
 
-  private apiUrl = 'https://restcountries.com/v3.1/all?fields=name,flags';
+  private apiUrl = 'https://restcountries.com/v3.1/all/?fields=name,flags,translations';
   
 
   constructor(private httpClient:HttpClient) { }

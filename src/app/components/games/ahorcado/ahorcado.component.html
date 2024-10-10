@@ -14,45 +14,65 @@
     </nav>
     <br>
     <div class="contenido">
-    
-        <div class="keyboard">
-
-            <div class="row">
-                <button class="key">Q</button>
-                <button class="key">W</button>
-                <button class="key">E</button>
-                <button class="key">R</button>
-                <button class="key">T</button>
-                <button class="key">Y</button>
-                <button class="key">U</button>
-                <button class="key">I</button>
-                <button class="key">O</button>
-                <button class="key">P</button>
-            </div>
-            
-            <div class="row">
-                <button class="key">A</button>
-                <button class="key">S</button>
-                <button class="key">D</button>
-                <button class="key">F</button>
-                <button class="key">G</button>
-                <button class="key">H</button>
-                <button class="key">J</button>
-                <button class="key">K</button>
-                <button class="key">L</button>
-            </div>
-            
-            <div class="row">
-                <button class="key">Z</button>
-                <button class="key">X</button>
-                <button class="key">C</button>
-                <button class="key">V</button>
-                <button class="key">B</button>
-                <button class="key">N</button>
-                <button class="key">M</button>
-            </div>
-
+        <div class="game">
+            @switch(vidas)
+            {
+                @case(6)
+                {
+                    <img src="../../../../assets/images/ahorcado1.png" alt="">
+                }
+                @case(5)
+                {
+                    <img src="../../../../assets/images/ahorcado2.png" alt="">
+                }
+                @case(4)
+                {
+                    <img src="../../../../assets/images/ahorcado3.png" alt="">
+                }
+                @case(3)
+                {
+                    <img src="../../../../assets/images/ahorcado4.png" alt="">
+                }
+                @case(2)
+                {
+                    <img src="../../../../assets/images/ahorcado5.png" alt="">
+                }
+                @case(1)
+                {
+                    <img src="../../../../assets/images/ahorcado6.png" alt="">
+                }
+                @case(0)
+                {
+                    <img src="../../../../assets/images/ahorcado7.png" alt="">
+                }
+            }
+            <h2>{{ palabraOculta.join(' ') }}</h2>
         </div>
+        <div class="keyboard">
+            <div class="row">
+              <button class="key" *ngFor="let letra of 'QWERTYUIOP'.split('')" 
+                      (click)="seleccionarLetra(letra)" 
+                      [disabled]="letrasSeleccionadas.includes(letra)">
+                {{ letra }}
+              </button>
+            </div>
+            
+            <div class="row">
+              <button class="key" *ngFor="let letra of 'ASDFGHJKL'.split('')" 
+                      (click)="seleccionarLetra(letra)" 
+                      [disabled]="letrasSeleccionadas.includes(letra)">
+                {{ letra }}
+              </button>
+            </div>
+            
+            <div class="row">
+              <button class="key" *ngFor="let letra of 'ZXCVBNM'.split('')" 
+                      (click)="seleccionarLetra(letra)" 
+                      [disabled]="letrasSeleccionadas.includes(letra)">
+                {{ letra }}
+              </button>
+            </div>
+          </div>
 
     </div>
 </div>

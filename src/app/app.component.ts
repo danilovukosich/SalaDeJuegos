@@ -17,6 +17,14 @@ export class AppComponent {
 
   constructor(private renderer: Renderer2, private auth: AuthService) {}
 
+  ngOnInit(): void {
+    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+    //Add 'implements OnInit' to the class.
+    setTimeout(()=>{
+
+    }, 500);
+  }
+
 
   LightDarkMode():void
   {

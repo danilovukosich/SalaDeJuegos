@@ -61,7 +61,9 @@ export class BanderasComponent {
 
     // asigna la bandera e información correcta
     this.imagenBandera = paisCorrecto.flags.png;
-    this.banderaCorrecta = paisCorrecto.name.common;
+    this.banderaCorrecta = paisCorrecto.translations.spa.common;
+
+    
 
     //la opción correcta
     this.opcionesPaises.push(this.banderaCorrecta);
@@ -70,7 +72,7 @@ export class BanderasComponent {
     while (this.opcionesPaises.length < 4) 
     {
       const indicePaisIncorrecto = Math.floor(Math.random() * this.paises.length);
-      const paisIncorrecto = this.paises[indicePaisIncorrecto].name.common;
+      const paisIncorrecto = this.paises[indicePaisIncorrecto].translations.spa.common;
 
       // Evitar duplicados
       if (!this.opcionesPaises.includes(paisIncorrecto)) 
