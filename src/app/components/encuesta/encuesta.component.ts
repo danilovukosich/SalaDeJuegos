@@ -61,10 +61,10 @@ export class EncuestaComponent {
                                 "favorito":this.form.get('juegoFavorito')?.value});
 
 
-                                this.toast.success("¡Encuesta enviada!");
-                                
-                                this.form.reset();
-                                this.formSubido=false;
+      this.toast.success("¡Encuesta enviada!");
+      
+      this.form.reset();
+      this.formSubido=false;
     }
     else
     {
