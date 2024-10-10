@@ -1,0 +1,119 @@
+<div class="container">
+    <nav>
+        <div class="itemsNav" routerLink="home">
+            <i class='bx bx-chevron-left' style='color:#ffffff'  ></i>
+            <h2>Volver</h2>
+        </div>
+
+        
+        <h1>Encuesta</h1>
+        
+        <div></div>
+    </nav>
+    <br>
+    <div class="contenido">
+        
+       
+        
+        <form [formGroup]="form" (submit)="EnviarEncuesta()">
+
+                <div class="containerDos">
+                    <div>
+                        <h2 style="color: #f1c555;">Datos personales</h2>
+                        <div style="display: flex;">
+                            <div class="input-box" >
+                                <input name="nombre" [ngStyle]="{'border': formSubido && nombre?.hasError('required') ? '2px solid rgb(233, 66, 66)' : '2px solid #ccc'}" formControlName="nombre" type="text" placeholder="Nombre" >
+                                @if(formSubido && nombre?.hasError('required')) 
+                                {
+                                    <br>
+                                    <label style="color: rgb(233, 66, 66);" for="nombre">Ingrese nombre</label>
+                                }
+
+                            </div>
+                            <div class="input-box">
+                                <input [ngStyle]="{'border': formSubido && apellido?.hasError('required') ? '2px solid rgb(233, 66, 66)' : '2px solid #ccc'}" formControlName="apellido" type="text" placeholder="Apellido">
+                                @if( formSubido && apellido?.hasError('required')) 
+                                {
+                                    <br>
+                                    <label style="color: rgb(233, 66, 66);" for="nombre">Ingrese apellido</label>
+                                }
+                            </div>
+                        </div>
+                        <div style="display: flex;">
+                            <div class="input-box">
+                                <input [ngStyle]="{'border': formSubido && edad?.hasError('required') ? '2px solid rgb(233, 66, 66)' : '2px solid #ccc'}" formControlName="edad" type="number" min="18" max="99" placeholder="Edad">
+                                @if(formSubido && edad?.hasError('required')) 
+                                {
+                                    <br>
+                                    <label style="color: rgb(233, 66, 66);" for="nombre">Ingrese edad</label>
+                                }
+                                @if(formSubido && edad?.hasError('min')) 
+                                {
+                                    <br>
+                                    <label style="color: rgb(233, 66, 66);" for="nombre">Debe ser mayor de 18 años</label>
+                                }
+                                @if(formSubido && edad?.hasError('max')) 
+                                {
+                                    <br>
+                                    <label style="color: rgb(233, 66, 66);" for="nombre">Ingrese una edad valida</label>
+                                }
+                            </div>
+                            <div class="input-box">
+                                <input [ngStyle]="{'border': formSubido && telefono?.hasError('required') ? '2px solid rgb(233, 66, 66)' : '2px solid #ccc'}" formControlName="telefono" type="number" min="1" max="9999999999" placeholder="Nro. Telefono">
+                                @if(formSubido && telefono?.hasError('required')) 
+                                {
+                                    <br>
+                                    <label style="color: rgb(233, 66, 66);" for="nombre">Ingrese telefono</label>
+                                }
+                            </div>
+                        </div>
+                        <div style="display: flex; justify-content: space-evenly; margin-top: 15px;">
+                            <div>
+                                <h2 style="color: #f1c555;">Como nos conocio?</h2>
+                                <div class="input-box">
+                                    <input [ngStyle]="{'border': formSubido && conocio?.hasError('required') ? '2px solid rgb(233, 66, 66)' : '2px solid #ccc'}" formControlName="conocio"  type="text" placeholder="Escriba aqui...">
+                                    @if( formSubido && conocio?.hasError('required')) 
+                                    {
+                                        <br>
+                                        <label style="color: rgb(233, 66, 66);" for="nombre">Complete el campo...</label>
+                                    }
+                                </div>
+                            </div>
+                            <div>
+                                <h2 style="color: #f1c555;">Nos recomendarias?</h2>
+                            
+                                <input  value="si" name="si-no" checked type="radio">Si
+                                <input  value="no" name="si-no" type="radio">No
+                                    
+                            </div>
+                            <div style="align-items: start;">
+                                <h2 style="color: #f1c555;">Juegos Favoritos:</h2>
+                                <div style="align-items: start;">
+                                    <input  value="banderas" type="checkbox">Banderas
+                                    <br>
+                                    <input value="ahorcado" type="checkbox">Ahorcado
+                                    <br>
+                                    <input value="mayormenor" type="checkbox">Mayor menor
+                                    <br>
+                                    <input value="simon" type="checkbox">Simon
+        
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                   
+                </div>
+                <footer>
+       
+                    <button  class="cancelarBtn">Cancelar</button>
+                    <button class="enviarBtn" type="submit">Enviar</button>
+                    
+                </footer>
+        </form>
+            
+        
+
+    </div>
+    
+</div>

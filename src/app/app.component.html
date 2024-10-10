@@ -9,10 +9,17 @@
       <nav>
           <ul class="nav-links">
               <li><a routerLink="home">Home</a></li>
-              <li><a routerLink="stats">Estadisticas</a></li>
+              @if (this.VerifyCurrentUser())
+              {
+                <li><a routerLink="stats">Estadisticas</a></li>
+              }
               @if (this.VerifyCurrentUser())
               {
                 <li><a routerLink="chat">Sala de chat</a></li>
+              }
+              @if (this.VerifyCurrentUser())
+              {
+                <li><a routerLink="encuesta">Encuesta</a></li>
               }
               <li><a routerLink='about'>Quien soy?</a></li>
           </ul>

@@ -9,6 +9,7 @@ import { AhorcadoComponent } from './components/games/ahorcado/ahorcado.componen
 import { PreguntadosComponent } from './components/games/preguntados/preguntados.component';
 import { SimonComponent } from './components/games/simon/simon.component';
 import { BanderasComponent } from './components/games/banderas/banderas.component';
+import { EncuestaComponent } from './components/encuesta/encuesta.component';
 
 export const routes: Routes = [
     {path: "", redirectTo:"home", pathMatch:'full'},
@@ -22,6 +23,8 @@ export const routes: Routes = [
     // {path:'preguntados', component:PreguntadosComponent},
     {path:'banderas', component:BanderasComponent},
     {path:'simon', component:SimonComponent},
+    {path:'encuesta', component:EncuestaComponent},
+
 
 
     {path: "**", redirectTo:"home", pathMatch:'full'},

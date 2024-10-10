@@ -1,5 +1,5 @@
 .container{
-    width: 720px;
+    width: 750px;
     height: 550px;
     background: transparent 50%;
     backdrop-filter: blur(20px);
@@ -27,16 +27,40 @@
     color: #f1c555;
 }
 
+.containerDos .input-box{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    /* background: salmon; */
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+
+.input-box input{
+    width: 150px;
+    height: 7px;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 10px;
+    font-size: 16px;
+    color: #fff;
+    padding: 20px 45px 20px 20px;
+}
+
+.input-box input::placeholder{
+    color: #fff;
+}
 
 h1{
     font-size: 36px;
     font-family: "Poppins", sans-serif;
     font-weight: 700;
     text-align: center;
+    margin-right: 50px;
 }
-
-
-
 
 
 nav{
@@ -67,46 +91,35 @@ footer{
     justify-content: space-evenly;
 }
 
+
 button{
     font-family: "Poppins", sans-serif;
     font-weight: 400;
     font-size: 16px;
-    color: #fff;
     text-decoration: none;
     cursor: pointer;
     background-color: transparent;
-    transition: all 0.3s ease 0s;
-}
-
-footer button{
-    padding: 9px 25px;
+    padding: 9px 35px;
     border-radius: 30px;
+    color: black;
+    background-color: #fff;
     border: none;
     transition: all 0.3s ease 0s;
 }
 
-.corazones{
-    transform: translateY(-12%);
+.cancelarBtn:hover{
+    background-color: rgb(233, 66, 66);
+    color: #fff;
 }
 
-.corazones i{
-    font-size: 30px;
+.enviarBtn:hover{
+    background-color: #53c736;
+    color: #fff;
 }
 
-.vidas{
-    display: flex;
-}
 
-.vidas i,h2{
-    cursor: default;
-}
 
-.botonesSelect{
-    display: flex;
-    justify-content: space-evenly;
-    padding-left: 5%;
-    padding-right: 5%;
-}
+
 
 
 .contenido {
@@ -122,62 +135,21 @@ footer button{
     align-items: center;
     text-align: center;
   }
-  
-  .imagen-bandera {
-    max-width: 350px;
-    height: 200px;
-   
-    margin-bottom: 50px;
-  }
-  
-  .buttons-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr; 
-    gap: 10px 10px;
-    width: 100%; 
-    max-width: 400px; 
-    justify-content: center;
-    align-items: center;
-    
-  }
-  
-  .button {
-    padding: 7px 50px;
-    background-color: #fff;
-    color: black;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 18px;
-    width: 300px; 
-    max-width: 400px;
-  }
-  
-  .button:hover {
-    background-color: #f1c555;
 
-  }
-  
-  /* botones pegados al fondo */
-  .buttons-container {
-    margin-top: auto;
-    margin-bottom: 0;
-  }
-
-
-.restart-button{
-    padding: 7px 50px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 18px;
-    width: 300px; 
-    background-color: #f1c555; 
-    color: #000000;
-    margin-left: 50px;
-}
-
-.restart-button:hover{
-    background-color: #53c736;
+  .containerDos{
+    width: 650px;
+    height: 350px;
+    background: transparent;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
     color: #fff;
+    /* hacerle espacio entre los borde y el contenido */
+    border-radius: 10px;/* bordes redondos */
+    padding: 25px 40px;
+    border: 2px solid rgba(255, 255, 255, .2);
+    position: relative;
+    transition: height .45s ease;
+    overflow: hidden;
+    margin-bottom: 3%;
+    
 }
