@@ -57,8 +57,8 @@ export class ChatComponent
   ngAfterViewChecked()//chekea cambios en la view 
   {
     this.scrollToBottom();//(al escribir o enviar un mensaje escrolea hacia abajo)
-    let user = this.auth.GetUser();//SACAR?
-    this.userEmail = user?.email;//SACAR?
+    let user = this.auth.GetUser();//SACAR
+    this.userEmail = user?.email;//SACAR
   }
 
 
