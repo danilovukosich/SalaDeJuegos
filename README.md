@@ -7,6 +7,8 @@ https://saladejuegos-10683.web.app
 
 ## Para testear de manera local seguir los pasos
 
-> Tener node y angular instalados
-> npm install
-> npm run dev
+- Tener node y angular instalados
+
+- npm install
+  
+- npm run dev
