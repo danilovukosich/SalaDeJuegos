@@ -1,6 +1,8 @@
 # Sala de juegos
 Pagina web de una sala de juegos desarrollada en Angular 17.3.4 con Firebase.
 
+Cuenta con un login y registro con firebase, 4 juegos (Adivina la bnadera, Mayor o menor, Ahoracado y Simon), una sala de chat en vivo para hablar con los usuarios logueados, una pantalla de estadistican con los mejores jugadores de cada juego y una encuesta para recibir feedback sobre el desarrollo.
+
 ## Home
 
 ![image](https://github.com/user-attachments/assets/d401a189-20da-40e6-9e37-ff5e16f32132)
